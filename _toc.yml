@@ -1,0 +1,87 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Representing and Discovering Knowledge with Logic
+    chapters:
+    - file: Part1/1. LogicAndAI.md
+      sections:
+      - file: Part1/2. Exercise 1 Are you Logical.md
+      - file: Part1/3. LogicalReasoning.md
+      - file: Part1/4. Exercise 2 Elementary my dear Watson.md
+      - file: Part1/5. Formal Propositional Logic.md
+      - file: Part1/6. Exercise 3 Formal Dinners.md
+      - file: Part1/7. Proving Arguments.md
+      - file: Part1/8. Exercise 4 Natural Deduction.md
+      - file: Part1/9. Kanren Tutorial nocode.ipynb
+      - file: Part1/10. Exercises 5 Kanren nocode.ipynb
+      - file: Part1/11. Automating Natural Deduction.md
+      - file: Part1/12. Exercise 6 Automating Natural Deduction.md
+      - file: Part1/13. Proof and Search.md
+      - file: Part1/14. Exercises 7 Proof and Search.md
+      - file: Part1/15. First Order Logic.md
+      - file: Part1/16. Exercises 8 First Order Logic.md
+      
+#  - caption: Organising Knowledge with Graphs
+#    chapters:
+#    - file: 2. Knowledge Graphs and Ontologies
+#  - caption: Representing Knowledge that is Uncertain
+#    chapters:
+#    - file: 3. Reasonig under Uncertainty
+#  - caption: Sections from old course to be ported
+#    chapters:
+#    - file: Part4Old/1. IntroductionToLogic.md
+#      section:
+#      - file: Part4Old/1a. LogicAndKnowledge.md
+#      - file: Part4Old/Exercise 1a. Are you Logical.md
+#      - file: Part4Old/1b. Propositional Logic.md
+#      - file: Part4Old/Exercise 1b. Propositions and Arguments.md
+#      - file: Part4Old/1c. FormalPropositionalLogic.ipynb
+#      - file: Part4Old/Exercise 1c. Formal Propositional Logic.md
+#      - file: Part4Old/1d. KnowledgeBases.ipynb
+#      - file: Part4Old/Exercise 1d. KnowledgeBases.md
+#      - file: Part4Old/1e. ProofsInPropositionalLogic.ipynb
+#      - file: Part4Old/Exercise 1e. Proofs in Propositional Logic.md
+#      - file: Part4Old/1f. ModelChecking.ipynb
+#      - file: Part4Old/Exercise 1f. KnowledgeBasesPractical.ipynb
+#      - file: Part4Old/1g. NaturalDeduction.md
+#      - file: Part4Old/Exercise 1g. Natural Deduction.md
+#      - file: Part4Old/1h. NaturalDeduction2.md
+#      - file: Part4Old/Exercise 1h. More Natural Deduction.md
+#      - file: Part4Old/1i. FirstOrderLogic.md
+#      - file: Part4Old/Exercise 1i. First Order Logic.md
+#      - file: Part4Old/1j. PredicateCalculus.md
+#      - file: Part4Old/Exercise 1j. More Predicate Calculus.md
+#      - file: Part4Old/1k. Resolution.md
+#      - file: Part4Old/Exercise 1k. Resolution.md
+#      - file: Part4Old/1l. ImplementingResolution.ipynb
+#      - file: Part4Old/1m. Conjunctive Normal Form.md
+#      - file: Part4Old/Exercise 1m. Conjunctive Normal Form.md
+#      - file: Part4Old/1n. ProofByResolution.ipynb
+#      - file: Part4Old/Exercise 1n. Proof by Resolution.ipynb
+#      - file: Part4Old/Exercise 1o. Incremental Model Construction.md
+#      - file: Part4Old/1p. Implementing Backtracking.ipynb
+#      - file: Part4Old/Exercise 1p. Backtracking search.ipynb
+#      - file: Part4Old/1o. SAT and Backtracking.md
+#    - file: Part4Old/2. Knowledge Graphs and Ontologies
+#      sections:
+#      - file: Part4Old/Exercise 2a. Knowledge Graphs.ipynb
+#      - file: Part4Old/2a. KnowledgeGraph.ipynb
+#    - file: Part4Old/3. Reasoning under Uncertainty.md
+#      sections:
+#      - file: Part4Old/3a. Probabilistic Reasoning.md
+#      - file: Part4Old/3b. Conditional Independence.ipynb
+#      - file: Part4Old/Exercise 3b. Conditional Independence.ipynb
+#      - file: Part4Old/Exercise 3a. Probability.ipynb
+#      - file: Part4Old/3c. Bayesian Networks.md
+#    #  - file: Exercise 3c. Bayesian Networks.docx
+#      - file: Part4Old/3d. Exact Inference in Bayesian Networks.ipynb
+#    #  - file: Exercise 3d. Bayesian Networks.pdf
+#      - file: Part4Old/3e. Approximate Inference.ipynb
+#      - file: Part4Old/Exercise 3e. Some Bayesian Networks.md
+#      - file: Part4Old/Exercise 3f. Approximate Inference.ipynb
+#      - file: Part4Old/3f. More Approximate Inference.ipynb
+#      - file: Part4Old/Exercise 3g. Inference.ipynb
+#      - file: Part4Old/Exercise 3h. Approximate Inference with PyMC.ipynb
