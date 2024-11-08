@@ -1,0 +1,763 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>First Order Logic &#8212; ECS8052 Knowledge Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part1/15. First Order Logic';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercises 8: First Order Logic" href="16.%20Exercises%208%20First%20Order%20Logic.html" />
+    <link rel="prev" title="Exercise 7: Proof and Search" href="14.%20Exercises%207%20Proof%20and%20Search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="ECS8052 Knowledge Engineering - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="ECS8052 Knowledge Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to ECS8052 Knowledge Engineering
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representing and Discovering Knowledge with Logic</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="1.%20LogicAndAI.html">Introduction to Logic in Artificial Intelligence</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%201%20Are%20you%20Logical.html">Exercise 1: Are you Logical?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.%20LogicalReasoning.html">Logic and Knowledge</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="4.%20Exercise%202%20Elementary%20my%20dear%20Watson.html">Exercise 2: Elementary, my dear Watson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.%20Formal%20Propositional%20Logic.html">Making Logical Arguments Formal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.%20Exercise%203%20Formal%20Dinners.html">Exercise 3: Formal Dinners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.%20Proving%20Arguments.html">Proving Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8.%20Exercise%204%20Natural%20Deduction.html">Exercise 4: Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9.%20Kanren%20Tutorial%20nocode.html">Logic Programming in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10.%20Exercises%205%20Kanren%20nocode.html">Exercises 5: Using Kanren to Solve Logic Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.%20Automating%20Natural%20Deduction.html">Automating Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12.%20Exercise%206%20Automating%20Natural%20Deduction.html">Exercise 6: Automating Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.%20Proof%20and%20Search.html">Proof and Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.%20Exercises%207%20Proof%20and%20Search.html">Exercise 7: Proof and Search</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">First Order Logic</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="16.%20Exercises%208%20First%20Order%20Logic.html">Exercises 8: First Order Logic</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart1/15. First Order Logic.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Part1/15. First Order Logic.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>First Order Logic</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">First Order Logic</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">First order Logic</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ingredients-of-predicate-calculus">The Ingredients of Predicate Calculus</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predicates">Predicates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifiers">Quantifiers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality-of-quantifiers">Duality of Quantifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicates-with-multiple-arguments">Predicates with multiple arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics-of-predicates">Semantics of Predicates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validity-of-predicate-arguments">Validity of Predicate Arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proofs-in-first-order-logic">Proofs in First Order Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forall-elimination"><span class="math notranslate nohighlight">\(\forall\)</span>-elimination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exists-introduction"><span class="math notranslate nohighlight">\(\exists\)</span>-introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forall-introduction"><span class="math notranslate nohighlight">\(\forall\)</span>-introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exists-elimination"><span class="math notranslate nohighlight">\(\exists\)</span>-elimination</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="first-order-logic">
+<h1>First Order Logic<a class="headerlink" href="#first-order-logic" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>We have been studying propositional logic which has allowed us to reason over a set of sentences which can each be evaluated as being True or False.</p>
+<blockquote>
+<div><p>All computer scientists are logical
+Alan is a computer scientist
+Therefore Alan is logical</p>
+</div></blockquote>
+<p>Each of these sentences is a proposition: they can all be evaluated as True of False. Can we prove this argument using propositional logic? Our arguments might be something like</p>
+<blockquote>
+<div><p>If a person is a computer scientist then they are logical.
+Alan is a computer scientist.
+Therefore Alan is Logical.</p>
+</div></blockquote>
+<p>Or, using obvious notation,</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(C\implies L,\ A\implies C,\ A\ :\ L\)</span></p>
+</div></blockquote>
+<p>This argument seems to stand up, but the definition of the atomic propositions <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(C\)</span>, and <span class="math notranslate nohighlight">\(L\)</span> is rather important here. We might define</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C\)</span>: The person is a computer scientist</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span>: The person is called Alan</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span>: The person is logical</p></li>
+</ul>
+<p>This seems rather inelegant and clumsy. Most importantly, if we also decided that we wanted to check whether Niamh and Chen were logical, we would have to construct separate proofs for them. If we also decided that Physicists and Philosopher were all logical as well, then we have a combinatorial explosion of arguments to prove. Propositional Logic becomes even more convoluted if you consider an argument such as:</p>
+<blockquote>
+<div><p>All computer scientists are logical
+Some computer scientists are Irish
+Therefore, some computer scientists are logical and Irish.</p>
+</div></blockquote>
+<p>This argument includes <em>quantifiers</em> (all, some) that we do not have natural mechanisms for working with in propositional logic. We circumvented this in the previous argument by careful definitions of the sentences but we cannot apply that trick here. We need some new mechanisms.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>First order Logic<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>In propositional logic, all of our propositions have to be unconditionally True or False. This makes it difficult to construct generic arguments, or to construct sentences that are conditionally dependent on some variable. First order logic extends propositional logic to include mechanisms for reasoning over statements that include <em>variables</em> (Alan), <em>quantifiers</em> (all/some), and <em>predicates</em> which are propositions with conditions. For this reason we will refer to the system of logic we are about to describe as <strong>predicate calculus</strong>.</p>
+<section id="the-ingredients-of-predicate-calculus">
+<h2>The Ingredients of Predicate Calculus<a class="headerlink" href="#the-ingredients-of-predicate-calculus" title="Link to this heading">#</a></h2>
+<p>Predicate calculus includes some new concepts that enable us to reason</p>
+<section id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h3>
+<p>Denoted as <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(z\)</span>, etc.</p>
+</section>
+<section id="predicates">
+<h3>Predicates<a class="headerlink" href="#predicates" title="Link to this heading">#</a></h3>
+<p>Predicates are statements that are similar to proposition, but for which their Truth depends on the value of an associate variable or variables. For example <span class="math notranslate nohighlight">\(P(x)\)</span>: “x is a Philosopher” is true when <span class="math notranslate nohighlight">\(x\)</span> is “Socrates” and is False when <span class="math notranslate nohighlight">\(x\)</span> is “Donald Trump”.
+Predicates are denoted as <span class="math notranslate nohighlight">\(P\)</span>, <span class="math notranslate nohighlight">\(Q\)</span>, <span class="math notranslate nohighlight">\(R\)</span> etc.</p>
+</section>
+<section id="quantifiers">
+<h3>Quantifiers<a class="headerlink" href="#quantifiers" title="Link to this heading">#</a></h3>
+<p>There are two common quantifiers:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\forall\)</span>, meaning ‘for all’ (universal quantifier)</p>
+</div></blockquote>
+<p>For example, given person <span class="math notranslate nohighlight">\(x\)</span> and predicate <span class="math notranslate nohighlight">\(P(x)\)</span> (<span class="math notranslate nohighlight">\(x\)</span> is a philosopher) and <span class="math notranslate nohighlight">\(L(x)\)</span> (<span class="math notranslate nohighlight">\(x\)</span> is logical) we may write “all philosophers are logical as”</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\forall\ x\ [P(x)\implies L(x)]\)</span></p>
+</div></blockquote>
+<p>Read literally, this states that “if person <span class="math notranslate nohighlight">\(x\)</span> is a philosopher then <span class="math notranslate nohighlight">\(x\)</span> is logical for all people”. Notice that we use implication here to allow for the possibility of logical people who are not philosophers. What would the following expression mean?</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\forall\ x\ [P(x)\land L(x)]\)</span></p>
+</div></blockquote>
+<p>The second common quantifier is</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\exists\)</span>, meaning ‘exists’ (existential quantifier)</p>
+</div></blockquote>
+<p>We may therefore write “some philophers are Irish” as</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\exists\ x\ [P(x)\land I(x)]\)</span></p>
+</div></blockquote>
+<p>This can be read as “There is at least one person who is both a Philosopher and Irish”. We may have been tempted to write:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\exists\ x\ [P(x)\implies I(x)]\)</span>.</p>
+</div></blockquote>
+<p>What does this expression mean? When using quantifiers, you need to think quite carefully about which logical connectives you should be using. It is not difficult to make mistakes. It can sometime be helpful to think about familiar examples.</p>
+<p>We can also use logical connectives with quantifiers. For example,</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\exists\ x\ [C(x)]\ \land\ \lnot\forall\ x\ [L(x)]\)</span></p>
+</div></blockquote>
+<p>means “some people are computer scientists and not all people are logical”.</p>
+</section>
+</section>
+<section id="duality-of-quantifiers">
+<h2>Duality of Quantifiers<a class="headerlink" href="#duality-of-quantifiers" title="Link to this heading">#</a></h2>
+<p>Consider the following two pairs of statements:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\forall\ x\ [C(x)]\quad\iff\quad\lnot\exists\ x\ [\lnot C(x)]\)</span></p>
+</div></blockquote>
+<p>and</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\exists\ x\ [C(x)]\quad\iff\quad\lnot\forall\ x\ [\lnot C(x)]\)</span></p>
+</div></blockquote>
+<p>Are these statements True?</p>
+<p>What about the following statements?</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\forall\ x\ [\lnot C(x)]\quad\iff\quad\lnot\exists\ x\ [C(x)]\)</span></p>
+</div></blockquote>
+<p>and</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\exists\ x\ [\lnot C(x)]\quad\iff\quad\lnot\forall\ x\ [C(x)]\)</span></p>
+</div></blockquote>
+<p>The quantifiers <span class="math notranslate nohighlight">\(\forall\)</span> and <span class="math notranslate nohighlight">\(\exists\)</span> are said to be <strong>dual</strong> to each other. We can always write predicates written using one quantifier in terms of the other. This will be an important tool when constructing proofs in predicate calculus.</p>
+</section>
+<section id="predicates-with-multiple-arguments">
+<h2>Predicates with multiple arguments<a class="headerlink" href="#predicates-with-multiple-arguments" title="Link to this heading">#</a></h2>
+<p>Predicate calculus gives us the freedom to introduce predicates that are conditional on more than one variable. Consider the following sentence:</p>
+<p><span class="math notranslate nohighlight">\(x\)</span> was outstanding at <span class="math notranslate nohighlight">\(y\)</span> and also highly proficient at <span class="math notranslate nohighlight">\(z\)</span></p>
+<p>The sentence is true for <span class="math notranslate nohighlight">\((x,y,z)=(\mathrm{Alan\ Turing, Computer\ Science, long\ distance\ running})\)</span> but is not true for <span class="math notranslate nohighlight">\((x,y,z)=(\mathrm{Donald\ Trump, Computer\ Science, long\ distance\ running})\)</span> and so this is a valid predicate that is conditional on multiple values.</p>
+<p>We do not have a way to construct such as sentence yet so we create one by allowing predicates to take multiple arguments. For example, we could define the sentence above as <span class="math notranslate nohighlight">\(S(x,y,z)\)</span> and then apply the same ideas as we have already used. Predicates with one argument are called <em>unary</em> predicates, those with two arguments are called <em>binary</em> predicates. In general, predicates with <span class="math notranslate nohighlight">\(n\)</span> arguments are called <span class="math notranslate nohighlight">\(n\)</span>-ary predicates. Those with zero arguments are referred to as <em>nullary</em> predicates, or by an alternative name that we have already seen. Can you think of what this is?</p>
+</section>
+<section id="semantics-of-predicates">
+<h2>Semantics of Predicates<a class="headerlink" href="#semantics-of-predicates" title="Link to this heading">#</a></h2>
+<p>In the propositional logic we introduced a distinction between the validity and soundness of arguments. The same ideas are applicable in predicate calculus. Arguments that are “correct” must be both valid (correctly argued) and sound (based on correct premises). Sentences or predicates must be either True or False and this requires them to be grounded in some <strong>domain</strong> and subject to an <strong>interpretation</strong> which governs how a truth value should be assigned to a given statement. Consider the simple predicate</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\forall\ x  [P(x)]\)</span></p>
+</div></blockquote>
+<p>This is clearly a well-formed predicate. But is it True? We cannot know without knowing what <span class="math notranslate nohighlight">\(F\)</span> means and what <span class="math notranslate nohighlight">\(x\)</span> is. To determine the truth of this sentence, we need to define the interpretation of <span class="math notranslate nohighlight">\(P(\cdot)\)</span> and the domain of <span class="math notranslate nohighlight">\(x\)</span> - the range allowable values of <span class="math notranslate nohighlight">\(x\)</span>. We cannot determine the semantics (ie the meaning) of this sentence and therefore its Truth without these. Let us define an interpretation that <span class="math notranslate nohighlight">\(P(x)\)</span> is defined as “<span class="math notranslate nohighlight">\(x\)</span> has two wheels”. If <span class="math notranslate nohighlight">\(x\)</span> is defined on the domain “bicycles”, then our sentence is True by (bi?) definition.</p>
+<p>If we were to change the definition of <span class="math notranslate nohighlight">\(P(\cdot)\)</span> to be “<span class="math notranslate nohighlight">\(x\)</span> has feathers and wings” but leave the domain unchanged then our sentence is now False. Similary if we were to change only the domain of <span class="math notranslate nohighlight">\(x\)</span> to be “birds”, then the sentence would be False. If we were to change both domain and interpretation, then the predicate would be True.</p>
+</section>
+<section id="validity-of-predicate-arguments">
+<h2>Validity of Predicate Arguments<a class="headerlink" href="#validity-of-predicate-arguments" title="Link to this heading">#</a></h2>
+<p>As in propositional logic, we can construct arguments in which we attempt to derive new predicates that
+That is, given a set of premises which are true, we will be constructing and proving arguments that lead to True conclusions and are therefore <strong>valid</strong>. Notice that this is independent of the interpretation which affects only the truth of the premises: the truth of the premises affects only whether the argument is sound.</p>
+<p>An argument is valid iff</p>
+<ul class="simple">
+<li><p>The conclusion is True in every possible domain for every possible interpretation in which the Premises are True.</p></li>
+</ul>
+<p>An argument is invalid iff</p>
+<ul class="simple">
+<li><p>There exists a combination of domain and interpretation in which the premises are True and the conclusion is False.</p></li>
+</ul>
+<p>Thus, the following argument is valid: if the premise is True, then the conclusion must be True irrespective of the domain of <span class="math notranslate nohighlight">\(x\)</span> or the interpretation.</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\forall\ x  [P(x)]\ :\ \exists\ x\ [P(x)]\)</span></p>
+</div></blockquote>
+<p>The following argument is invalid: there are domains in which the premise is True but the conclusion is False.</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\exists\ x  [P(x)]\ :\ \forall\ x\ [P(x)]\)</span></p>
+</div></blockquote>
+</section>
+<section id="proofs-in-first-order-logic">
+<h2>Proofs in First Order Logic<a class="headerlink" href="#proofs-in-first-order-logic" title="Link to this heading">#</a></h2>
+<p>Proofs in First order Logic are very similar to those in propositional logic, except that we now have to worry about how to handle the quantifiers. Four new rules will enable us to do this.</p>
+<section id="forall-elimination">
+<h3><span class="math notranslate nohighlight">\(\forall\)</span>-elimination<a class="headerlink" href="#forall-elimination" title="Link to this heading">#</a></h3>
+<p>The basic idea here is that if a formula is universally quantified, then we can infer a particular instance</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\forall x [\phi(x)]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi(a)\)</span></p></li>
+</ol>
+</div></blockquote>
+<p>This is related to <span class="math notranslate nohighlight">\(\land\)</span>-elimination because <span class="math notranslate nohighlight">\(\forall x [\phi(x)] \equiv \phi(a) \land\phi(b)\land\phi(c)\dots\)</span></p>
+</section>
+<section id="exists-introduction">
+<h3><span class="math notranslate nohighlight">\(\exists\)</span>-introduction<a class="headerlink" href="#exists-introduction" title="Link to this heading">#</a></h3>
+<p>Given a particular instance we can infer an existential quantification</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>\phi(a)$$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists x [\phi(x)]\)</span></p></li>
+</ol>
+</div></blockquote>
+<p>This is related to <span class="math notranslate nohighlight">\(\or\)</span>-introduction because <span class="math notranslate nohighlight">\(\exists x [\phi(x)] \equiv \phi(a) \lor\phi(b)\lor\phi(c)\dots\)</span></p>
+</section>
+<section id="forall-introduction">
+<h3><span class="math notranslate nohighlight">\(\forall\)</span>-introduction<a class="headerlink" href="#forall-introduction" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>\phi(a)$$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall x [\phi(x)]\)</span></p></li>
+</ol>
+</div></blockquote>
+<p>We can only do this if we know nothing else about the particular instance <span class="math notranslate nohighlight">\(a\)</span>.</p>
+</section>
+<section id="exists-elimination">
+<h3><span class="math notranslate nohighlight">\(\exists\)</span>-elimination<a class="headerlink" href="#exists-elimination" title="Link to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Part1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="14.%20Exercises%207%20Proof%20and%20Search.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exercise 7: Proof and Search</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="16.%20Exercises%208%20First%20Order%20Logic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercises 8: First Order Logic</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">First Order Logic</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">First order Logic</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ingredients-of-predicate-calculus">The Ingredients of Predicate Calculus</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predicates">Predicates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifiers">Quantifiers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality-of-quantifiers">Duality of Quantifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicates-with-multiple-arguments">Predicates with multiple arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics-of-predicates">Semantics of Predicates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validity-of-predicate-arguments">Validity of Predicate Arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proofs-in-first-order-logic">Proofs in First Order Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forall-elimination"><span class="math notranslate nohighlight">\(\forall\)</span>-elimination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exists-introduction"><span class="math notranslate nohighlight">\(\exists\)</span>-introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forall-introduction"><span class="math notranslate nohighlight">\(\forall\)</span>-introduction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exists-elimination"><span class="math notranslate nohighlight">\(\exists\)</span>-elimination</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Iain Styles
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

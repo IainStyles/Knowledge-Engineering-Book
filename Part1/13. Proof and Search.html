@@ -1,0 +1,602 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Proof and Search &#8212; ECS8052 Knowledge Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part1/13. Proof and Search';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercise 7: Proof and Search" href="14.%20Exercises%207%20Proof%20and%20Search.html" />
+    <link rel="prev" title="Exercise 6: Automating Natural Deduction" href="12.%20Exercise%206%20Automating%20Natural%20Deduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="ECS8052 Knowledge Engineering - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="ECS8052 Knowledge Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to ECS8052 Knowledge Engineering
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representing and Discovering Knowledge with Logic</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="1.%20LogicAndAI.html">Introduction to Logic in Artificial Intelligence</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%201%20Are%20you%20Logical.html">Exercise 1: Are you Logical?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.%20LogicalReasoning.html">Logic and Knowledge</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="4.%20Exercise%202%20Elementary%20my%20dear%20Watson.html">Exercise 2: Elementary, my dear Watson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.%20Formal%20Propositional%20Logic.html">Making Logical Arguments Formal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.%20Exercise%203%20Formal%20Dinners.html">Exercise 3: Formal Dinners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.%20Proving%20Arguments.html">Proving Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8.%20Exercise%204%20Natural%20Deduction.html">Exercise 4: Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9.%20Kanren%20Tutorial%20nocode.html">Logic Programming in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10.%20Exercises%205%20Kanren%20nocode.html">Exercises 5: Using Kanren to Solve Logic Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.%20Automating%20Natural%20Deduction.html">Automating Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12.%20Exercise%206%20Automating%20Natural%20Deduction.html">Exercise 6: Automating Natural Deduction</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Proof and Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.%20Exercises%207%20Proof%20and%20Search.html">Exercise 7: Proof and Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.%20First%20Order%20Logic.html">First Order Logic</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="16.%20Exercises%208%20First%20Order%20Logic.html">Exercises 8: First Order Logic</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart1/13. Proof and Search.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Part1/13. Proof and Search.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Proof and Search</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breadth-first-search">Breadth-first Search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#depth-first-search">Depth-first Search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breadth-vs-depth-first-searching">Breadth- vs depth-first Searching</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="proof-and-search">
+<h1>Proof and Search<a class="headerlink" href="#proof-and-search" title="Link to this heading">#</a></h1>
+<p>In forward and backward chaining, we will often have a choice of rules that we can invoke. Consider the following slightly artificial example of a rule base:</p>
+<ol class="arabic simple">
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> goes “moo” then <span class="math notranslate nohighlight">\(x\)</span> is a cow.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> goes “baa” then <span class="math notranslate nohighlight">\(x\)</span> is a sheep.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> goes “neigh” then <span class="math notranslate nohighlight">\(x\)</span> is a horse.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> is a cow then <span class="math notranslate nohighlight">\(x\)</span> eats grass.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> is a sheep then <span class="math notranslate nohighlight">\(x\)</span> eats grass.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> is a horse then <span class="math notranslate nohighlight">\(x\)</span> eats oats.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> is a cow then <span class="math notranslate nohighlight">\(x\)</span> has four legs.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> is a sheep then <span class="math notranslate nohighlight">\(x\)</span> has four legs.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> is a horse then <span class="math notranslate nohighlight">\(x\)</span> has four legs.</p></li>
+</ol>
+<p>One important and natural way to think about inference on this problem is as <em>search on a graph</em>. Using the notation <code class="docutils literal notranslate"><span class="pre">M:</span> <span class="pre">goes</span> <span class="pre">&quot;Moo&quot;,</span> <span class="pre">C:</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">Cow</span></code> etc we define our graph with a node for each antecedent/consequent, and an arrow that links the antecedent to its consequent, as shown below:</p>
+<p><img alt="Graph of a rule-based system with nodes representing logical propositions and edges representing material implication." src="../_images/rulesgraph-a.png" /></p>
+<p>In these terms, forward chaining involves following the arrows, allowing to easily see that if <span class="math notranslate nohighlight">\(x\)</span> goes “baa” then <span class="math notranslate nohighlight">\(x\)</span> must east grass (path <code class="docutils literal notranslate"><span class="pre">B-&gt;S-&gt;G</span></code>). Conversely backward chaining requires us to move counter to the arrows and we can easily see that if we know as a fact that <span class="math notranslate nohighlight">\(x\)</span> goes “neigh” (ie, that <code class="docutils literal notranslate"><span class="pre">N</span></code> is True), then the goal <code class="docutils literal notranslate"><span class="pre">O</span></code> (<span class="math notranslate nohighlight">\(x\)</span> eats oats) can be proven by following the backward path <code class="docutils literal notranslate"><span class="pre">O&lt;-H&lt;-N</span></code>.</p>
+<p>The graphical representation allows us to see an immediate challenge: in both forward chaining and backward chaining, we can have <em>choices</em>. In forward chaining, the choice comes when we have multiple possible outgoing arrows to follow. For example, from node <code class="docutils literal notranslate"><span class="pre">C</span></code> we can traverse to both <code class="docutils literal notranslate"><span class="pre">G</span></code> and <code class="docutils literal notranslate"><span class="pre">F</span></code>, and we have no way to know which will get us to our goal. In backward chaining, we have to make choices at nodes with multiple incoming arrows, for example node <span class="math notranslate nohighlight">\(G\)</span>. If we are trying to prove <span class="math notranslate nohighlight">\(G\)</span> via backward chaining we have a choice of which arrow to follow backwards first, and whether <code class="docutils literal notranslate"><span class="pre">C</span></code> or <code class="docutils literal notranslate"><span class="pre">S</span></code> should be the new subgoal.</p>
+<p>How do we make these choices to ensure that we are fully exploring the graph, and doing so efficiently? We need to <strong>search</strong> the graph systematically. There are two comon ways to do this which we will illustrate via examples of backward chaining.</p>
+<section id="breadth-first-search">
+<h2>Breadth-first Search<a class="headerlink" href="#breadth-first-search" title="Link to this heading">#</a></h2>
+<p>Consider the hypothesis/goal “Jeff eats grass” (<code class="docutils literal notranslate"><span class="pre">G</span></code>) given the fact “Jess goes ‘moo’” (ie <code class="docutils literal notranslate"><span class="pre">M</span></code> is True). There are several ways in which a solution to this problem could be reached, because there are multiple rules that have consequents that match our goal, i.e. multiple arrows into <code class="docutils literal notranslate"><span class="pre">G</span></code> from <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">S</span></code>.</p>
+<p>In breadth-first search, we divide the graph into layers that are the same distance (number of connections) from our starting node <code class="docutils literal notranslate"><span class="pre">G</span></code>, and we search each layer exhaustively, either stopping when we have found a node that solves our problem or moving on to the next layer when we have examined all nodes in the current layer. In this examples</p>
+<ul class="simple">
+<li><p>We start the goal node <code class="docutils literal notranslate"><span class="pre">G</span></code>.</p></li>
+<li><p>In the first layer, we have two nodes <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">S</span></code> that have direct connections into <code class="docutils literal notranslate"><span class="pre">G</span></code>. We examine both of these nodes to see whether they solve the problem (ie is either <code class="docutils literal notranslate"><span class="pre">C</span></code> or <code class="docutils literal notranslate"><span class="pre">S</span></code> true?). Neither of these nodes is known to be True so they do not prove our goal. We must therefore look at the next layer of nodes, those that have connections into <code class="docutils literal notranslate"><span class="pre">G</span></code> and <code class="docutils literal notranslate"><span class="pre">S</span></code>.</p></li>
+<li><p>The next layer of nodes contains <code class="docutils literal notranslate"><span class="pre">B</span></code> and <code class="docutils literal notranslate"><span class="pre">N</span></code>. We first examine <code class="docutils literal notranslate"><span class="pre">B</span></code> and find that we do not know whether this is True. We then examine <code class="docutils literal notranslate"><span class="pre">M</span></code> and find that this node is True because it was given as an initial fact. We have therefore proven our goal statement <code class="docutils literal notranslate"><span class="pre">G</span></code> as we have found a direct path <code class="docutils literal notranslate"><span class="pre">M-&gt;C-&gt;G</span></code> to our goal from a known fact.</p></li>
+</ul>
+<p>If we were to solve the same problem via breadth first search applied to forward chaining, we would approach it in the following way:</p>
+<ul class="simple">
+<li><p>Our goal is <code class="docutils literal notranslate"><span class="pre">G</span></code></p></li>
+<li><p>We start at known fact <code class="docutils literal notranslate"><span class="pre">M</span></code></p></li>
+<li><p>Search layer one, which contains only node <code class="docutils literal notranslate"><span class="pre">C</span></code>. This does not satisfy our goal.</p></li>
+<li><p>Search layer two, which contains <code class="docutils literal notranslate"><span class="pre">F</span></code> and <code class="docutils literal notranslate"><span class="pre">G</span></code>. <code class="docutils literal notranslate"><span class="pre">F</span></code> does not satisfy our goal, but <code class="docutils literal notranslate"><span class="pre">G</span></code> does, thus proving <code class="docutils literal notranslate"><span class="pre">G</span></code> to be True.</p></li>
+</ul>
+</section>
+<section id="depth-first-search">
+<h2>Depth-first Search<a class="headerlink" href="#depth-first-search" title="Link to this heading">#</a></h2>
+<p>Let us consider the same problem by a different approach. In depth-first search we again structure the nodes into layers, but instead of searching each layer exhaustively before moving on to the next layer, we follow the connections to further layers, stopping only when we find a solution and cannot go any further. At this point, we track back a layer and follow the connections deeper. In this example, we proceed as follows:</p>
+<ul class="simple">
+<li><p>As before, we start at the goal node <code class="docutils literal notranslate"><span class="pre">G</span></code>.</p></li>
+<li><p>Layer 1 contains <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">S</span></code>. We choose one of these, say <code class="docutils literal notranslate"><span class="pre">S</span></code> and evaluate it. <code class="docutils literal notranslate"><span class="pre">S</span></code> is not know to be True, and so we proceed to search those nodes that have connections into S (<code class="docutils literal notranslate"><span class="pre">B</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">B</span></code> is not known to be True, and has no incoming arrows so we cannot continue any further.</p></li>
+<li><p>We therefore backtrack to <code class="docutils literal notranslate"><span class="pre">G</span></code> and then examine the next node in layer 1 (<code class="docutils literal notranslate"><span class="pre">C</span></code>) which is not know to be True.</p></li>
+<li><p>We then examine the nodes that connect into <code class="docutils literal notranslate"><span class="pre">C</span></code>, which is just <code class="docutils literal notranslate"><span class="pre">M</span></code> and we know that <code class="docutils literal notranslate"><span class="pre">M</span></code> is True. We have therefore proven our goal.</p></li>
+</ul>
+<p>Depth-first forward chaining for the same problem would proceed as follows:</p>
+<ul class="simple">
+<li><p>Our goal is <code class="docutils literal notranslate"><span class="pre">G</span></code>.</p></li>
+<li><p>We start at known fact <code class="docutils literal notranslate"><span class="pre">M</span></code></p></li>
+<li><p>Examine <code class="docutils literal notranslate"><span class="pre">S</span></code> which does not satisfy our goal.</p></li>
+<li><p>Examine the nodes that connect to <code class="docutils literal notranslate"><span class="pre">S</span></code> (<code class="docutils literal notranslate"><span class="pre">B</span></code>) which do not satisfy our goal.</p></li>
+<li><p>Examine <code class="docutils literal notranslate"><span class="pre">C</span></code> which does not satisfy our goal.</p></li>
+<li><p>Examine the nodes that connect to <code class="docutils literal notranslate"><span class="pre">C</span></code> (<code class="docutils literal notranslate"><span class="pre">M</span></code>) which does satisfy our goal.</p></li>
+</ul>
+<p>These two approaches are illustrated graphically in the following figure using the example of a balanced binary tree for simplicity, but the principles is readily transferrable to any graph.</p>
+<p><img alt="Breadth- vs depth-first search on a balanced binary tree" src="../_images/breadth-vs-depth.png" /></p>
+</section>
+<section id="breadth-vs-depth-first-searching">
+<h2>Breadth- vs depth-first Searching<a class="headerlink" href="#breadth-vs-depth-first-searching" title="Link to this heading">#</a></h2>
+<p>Given a choice of two strategies for graph search, and hence for rule-basedf inference, it is natural to ask “which method should I use?”. The answer to this question is, perhaps inevitably, that “it depends”.</p>
+<p>We might be tempted to select a method based on space/time complexity, but these are the same for both approaches. The time complexity depends on both the number of nodes/vertices <span class="math notranslate nohighlight">\(\lvert V\rvert\)</span> and the number of edges/arrows <span class="math notranslate nohighlight">\(\lvert E\rvert\)</span>, and is expressed as <span class="math notranslate nohighlight">\(\mathcal{O}(\lvert V\rvert+\lvert E\rvert)\)</span>. The space complexity, on the other hand, depends only on the number of vertices and is <span class="math notranslate nohighlight">\(O(\lvert V\rvert)\)</span>.</p>
+<p>In practice depth-first is usually preferred because it permits a simple recursive implementation. However, great care must be taken to ensure that there are no “cycles” in the graph because otherwise depth-first search will get stuck in a cycle. Breadth-first approaches are sometimes useful when you want to find the shortest chain of reasoning that leads to a particular outcome, but this is a relatively niche application.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Part1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="12.%20Exercise%206%20Automating%20Natural%20Deduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exercise 6: Automating Natural Deduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="14.%20Exercises%207%20Proof%20and%20Search.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercise 7: Proof and Search</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breadth-first-search">Breadth-first Search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#depth-first-search">Depth-first Search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breadth-vs-depth-first-searching">Breadth- vs depth-first Searching</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Iain Styles
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
