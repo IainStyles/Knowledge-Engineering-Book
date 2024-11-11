@@ -376,7 +376,7 @@ document.write(`
 <p>Most humans are easily able to infer that if these two statements are true, then Aristotle must be mortal. This type of thinking - <em>reasoning</em> - is widely believed to be a central component of any intelligent agent. Such reasoning abilities are demonstrated in a wide range of intelligent biological agents. For example, see <a class="reference external" href="https://www.youtube.com/watch?v=s2IBayVsbz8">this video</a> of crows using stones to raise the level of water in a jar so they can get to some food that is floating in the water. Reasoning abilities that allow rigourous arguments to be constructed that enable decisions to be made and actions to be taken to acheive  goals are generally regarded as an essential component of any intelligent system, though there are many disagreements about how to endow an artificial intelligent system with such abilities.</p>
 <p>If we accept that reasoning is an essential part of intelligence, then an artificial intelligence requires that the processes of reasoning that emerge naturally in biological systems need to be <em>mechanised</em> for and engineered implementation in a different medium. The mechanisation, or <em>automation</em> of reasoning has been studied for millenia, with philophers from al of the ancient cultures developing formal approaches to constructing arguments. Perhaps most famous in Western cultures is the work done by the Greek mathematician Euclid in his famous work <em>Elements</em>, but equally important work was being done in other cultures, for example, by al-Khwārizmī, from the ancient region of Khwarazm in what was once part of Iran and is part of Uzbekistan/Turkmenistan region, whose work included the development of modern algebra and the concept of the <em>algorithm</em>, a notion named after him. Their work is a direct precursor of first the work of Leibniz, Hobbes, and Descartes in the 17th Century, who investigated, from different perspectives, the idea that rational thought could be reduced to calculation.</p>
 <p>The study and automation of correct reasoning was also being extensively studies in philosophy, with formal logic crossing the boundary to mathematics where Alfred North Whitehead and Bertrand Russell successfully laid logical foundations to the whole of mathematics in their seminal work <em>Principia Mathematica</em>. A very accessible and informative introduction to Russell’s work can be hear on BBC Radio 4’s <a class="reference external" href="https://www.bbc.co.uk/sounds/play/b01p8fsr">In Our Time</a>. Formal logic would later play a critical role in the development of the first computer-based intelligent systems.</p>
-<p>The notion that computers could be intelligent was really catalysed by the man who is widely regarded as the Godfather of AI, Alan Turing. Turing first put forward the notion that in additional to having reasoning abilities, humans also used available information - knowledge - to solve problems <span id="id1">[<a class="reference internal" href="intro.html#id3" title="Alan Mathison Turing. Computing machinery and intelligence. Mind, 236:433-460, 1950. URL: https://academic.oup.com/mind/article/LIX/236/433/986238?login=false, doi:10.1093/mind/LIX.236.433.">Tur50</a>]</span>. This idea heavily influenced other early pioneers of AI such as John McCarthy, Marvin Minsky, Herb Simon, and others who realised that reasoning could be performed by <em>symbol manipulation</em>, where the symbols represented pieces of knowledge and the manipulations represented the steps in a reasoned argument. This focus on <em>symbolic AI</em> lasted several decades and resulted in systems such as Newell, Shaw, and Simon’s <em>Logic Theorist</em> <span id="id2">[<a class="reference internal" href="intro.html#id4" title="Allen Newell and Herbert A. Simon. The logic theory machine: a complex information processing system. Technical Report P-868, The RAND Corporation, June 1956. URL: https://github.com/theoremprover-museum/logic-theorist.">NS56</a>]</span>which was able to prove thirty-eight of the first fifty-two theorems in Whitehead and Russell’s <em>Principia Mathematica</em>.</p>
+<p>The notion that computers could be intelligent was really catalysed by the man who is widely regarded as the Godfather of AI, Alan Turing. Turing first put forward the notion that in additional to having reasoning abilities, humans also used available information - knowledge - to solve problems <span id="id1">[<a class="reference internal" href="#id4" title="Alan Mathison Turing. Computing machinery and intelligence. Mind, 236:433-460, 1950. URL: https://academic.oup.com/mind/article/LIX/236/433/986238?login=false, doi:10.1093/mind/LIX.236.433.">Tur50</a>]</span>. This idea heavily influenced other early pioneers of AI such as John McCarthy, Marvin Minsky, Herb Simon, and others who realised that reasoning could be performed by <em>symbol manipulation</em>, where the symbols represented pieces of knowledge and the manipulations represented the steps in a reasoned argument. This focus on <em>symbolic AI</em> lasted several decades and resulted in systems such as Newell, Shaw, and Simon’s <em>Logic Theorist</em> <span id="id2">[<a class="reference internal" href="#id5" title="Allen Newell and Herbert A. Simon. The logic theory machine: a complex information processing system. Technical Report P-868, The RAND Corporation, June 1956. URL: https://github.com/theoremprover-museum/logic-theorist.">NS56</a>]</span>which was able to prove thirty-eight of the first fifty-two theorems in Whitehead and Russell’s <em>Principia Mathematica</em>.</p>
 <p>These early successes were compelling and drove widespread optimism about AI-by-symbol-manipulation, but it was not too long before problems became evident. Foremost among these was the practical difficulty of maintaining a large and rapidly growing <em>knowledge base</em> in which known facts are represented in a <em>structured way</em>. This has led, in recent years, to a refocussing ofm AI research onto machine learning methods, and most recently deep neural networks. These methods have been successful across a wide range of problems and this includes demonstration of some <em>limited</em> reasoning capabilities. In particular, large language models (LLM), which learn from enormous <em>unstructured</em> knowledge bases, have been shown to be able to perform some basic reasoning. However, even cursory evaluations of the output of the most sophisticated LLM reveal that they often make basic errors in reasoning. This is because they have not been endowed, by design, with a mechanism for performing such reasoning <em>rigourously</em> and instead rely on correct reasoning emerging from statistical correlations in their dataset. Importantly, they do not have a robust internal representation of known facts about the world, although it is highly likely that they are likely to have developed some kind of representation.</p>
 <p>In this part of the course we will focus on developing methods for <em>formally</em> representing knowledge and reasoning (making decisions) <em>rigourously</em> over that knowledge. Our main approach will be to use the principles of formal <em>logic</em>, which we will find to be a very powerful tool for both manual and automated reasoning. The methods we will use were the mainstay of symbolic AI, and it is widely believed that the current challenges in getting LLMs to reason rigourously could be addressed by embedding logical capabilities into the LLM model.</p>
 <p>Let’s begin with an exercise - how good is <em>your</em> logical reasoning?</p>
@@ -2956,7 +2956,7 @@ That is, given a set of premises which are true, we will be constructing and pro
 <p>Given a particular instance we can infer an existential quantification</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>\phi(a)$$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi(a)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\exists x [\phi(x)]\)</span></p></li>
 </ol>
 </div></blockquote>
@@ -2966,7 +2966,7 @@ That is, given a set of premises which are true, we will be constructing and pro
 <h5><span class="math notranslate nohighlight">\(\forall\)</span>-introduction<a class="headerlink" href="#forall-introduction" title="Link to this heading">#</a></h5>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>\phi(a)$$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi(a)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\forall x [\phi(x)]\)</span></p></li>
 </ol>
 </div></blockquote>
@@ -3025,18 +3025,19 @@ g) Not all Irish people are computer scientists [<span class="math notranslate n
 h) There are no computer scientists who are not logical [<span class="math notranslate nohighlight">\(\forall\)</span>]</p>
 </li>
 </ul>
-<div class="highlight-{dropdown}**Solutions** notranslate"><div class="highlight"><pre><span></span>
-a) $\lnot\forall\ x\ [\lnot L(x)]$ . 
-b) $\lnot\exists\ x\ [\lnot(C(x)\land L(x))]$  
-c) $\lnot\forall\ x\ [\lnot(I(x)\implies C(x))]$  
-d) $\lnot\forall\ x\ [\lnot(L(x)\land I(x)\land C(x))]$  
-e) $\lnot\exists\ x\ [\lnot(I(x)\land C(x) \implies L(x))]\ \land\ \exists\ x\ [\lnot(I(x)\land C(x))]$    
-f) $\lnot\forall\ x\ [\lnot(L(x)\implies \lnot C(x))]$  
-g) $\exists\ x\ [\lnot(I(x)\and C(x))]$  
-h) $\forall\ x\ [\lnot(C(x)\implies \lnot L(x))]$
-</pre></div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><strong>Solutions</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">a) <span class="math notranslate nohighlight">\(\lnot\forall\ x\ [\lnot L(x)]\)</span> .
+b) <span class="math notranslate nohighlight">\(\lnot\exists\ x\ [\lnot(C(x)\land L(x))]\)</span><br />
+c) <span class="math notranslate nohighlight">\(\lnot\forall\ x\ [\lnot(I(x)\implies C(x))]\)</span><br />
+d) <span class="math notranslate nohighlight">\(\lnot\forall\ x\ [\lnot(L(x)\land I(x)\land C(x))]\)</span><br />
+e) <span class="math notranslate nohighlight">\(\lnot\exists\ x\ [\lnot(I(x)\land C(x) \implies L(x))]\ \land\ \exists\ x\ [\lnot(I(x)\land C(x))]\)</span><br />
+f) <span class="math notranslate nohighlight">\(\lnot\forall\ x\ [\lnot(L(x)\implies \lnot C(x))]\)</span><br />
+g) <span class="math notranslate nohighlight">\(\exists\ x\ [\lnot(I(x)\and C(x))]\)</span><br />
+h) <span class="math notranslate nohighlight">\(\forall\ x\ [\lnot(C(x)\implies \lnot L(x))]\)</span></p>
 </div>
-<ol class="arabic" start="3">
+</details><ol class="arabic" start="3">
 <li><p>State whether the following arguments are valid or invalid. You do not need to know the domain or interpretation to determine this.</p>
 <p>a) <span class="math notranslate nohighlight">\(\forall(x) [P(x)\land Q(x)])\ :\ \forall(x) [P(x)]\)</span>
 b) <span class="math notranslate nohighlight">\(\exists(x) [\lnot P(x)\land Q(x)]\ :\ \forall (x) [P(x)\lor Q(x)]\)</span>
