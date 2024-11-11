@@ -198,7 +198,6 @@
 <li class="toctree-l2"><a class="reference internal" href="13.%20Proof%20and%20Search.html">Proof and Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="14.%20Exercises%207%20Proof%20and%20Search.html">Exercise 7: Proof and Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="15.%20First%20Order%20Logic.html">First Order Logic</a></li>
-
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercises 8: First Order Logic</a></li>
 </ul>
 </details></li>
@@ -408,7 +407,7 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(C(x)\)</span>: <span class="math notranslate nohighlight">\(x\)</span> is a computer scientist</p></li>
 <li><p><span class="math notranslate nohighlight">\(L(x)\)</span>: <span class="math notranslate nohighlight">\(x\)</span> is logical</p></li>
 <li><p><span class="math notranslate nohighlight">\(I(x)\)</span>: <span class="math notranslate nohighlight">\(x\)</span> is Irish</p>
-<p>a) Some people are logical.<br />
+<p>a) Some people are logical.
 b) All computer scientists are logical.<br />
 c) Some Irish people are computer scientists.<br />
 d) Some logical people are Irish computer scientists.<br />
@@ -421,14 +420,16 @@ h) There are no computer scientists who are not logical</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text"><strong>Solutions</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">a) <span class="math notranslate nohighlight">\(\exists\ x\ [L(x)]\)</span> .
-b) <span class="math notranslate nohighlight">\(\forall\ x\ [C(x)\implies L(x)]\)</span><br />
-c) <span class="math notranslate nohighlight">\(\exists\ x\ [I(x)\land C(x)]\)</span><br />
-d) <span class="math notranslate nohighlight">\(\exists\ x\ [L(x)\land I(x)\land C(x)]\)</span><br />
-e) <span class="math notranslate nohighlight">\(\forall\ x\ [I(x)\land C(x) \implies L(x)]\ \land\ \lnot\forall\ x\ [I(x)\implies C(x)]\)</span><br />
-f) <span class="math notranslate nohighlight">\(\exists\ x\ [L(x)\land \lnot C(x)]\)</span><br />
-g) <span class="math notranslate nohighlight">\(\lnot\forall\ x\ [I(x)\implies C(x)]\)</span><br />
-h) <span class="math notranslate nohighlight">\(\lnot\exists\ x\ [C(x)\land \lnot L(x)]\)</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a) $\exists\ x\ [L(x)]$ . 
+b) $\forall\ x\ [C(x)\implies L(x)]$  
+c) $\exists\ x\ [I(x)\land C(x)]$  
+d) $\exists\ x\ [L(x)\land I(x)\land C(x)]$  
+e) $\forall\ x\ [I(x)\land C(x) \implies L(x)]\ \land\ \lnot\forall\ x\ [I(x)\implies C(x)]$    
+f) $\exists\ x\ [L(x)\land \lnot C(x)]$  
+g) $\lnot\forall\ x\ [I(x)\implies C(x)]$  
+h) $\lnot\exists\ x\ [C(x)\land \lnot L(x)]$  
+</pre></div>
+</div>
 </div>
 </details><ol class="arabic simple" start="2">
 <li><p>Using the following notation <em><strong>and the quantifier specified for each problem</strong></em>, translate the following sentences into predicate notation. For person <span class="math notranslate nohighlight">\(x\)</span>:</p></li>
@@ -437,27 +438,29 @@ h) <span class="math notranslate nohighlight">\(\lnot\exists\ x\ [C(x)\land \lno
 <li><p><span class="math notranslate nohighlight">\(C(x)\)</span>: <span class="math notranslate nohighlight">\(x\)</span> is a computer scientist</p></li>
 <li><p><span class="math notranslate nohighlight">\(L(x)\)</span>: <span class="math notranslate nohighlight">\(x\)</span> is logical</p></li>
 <li><p><span class="math notranslate nohighlight">\(I(x)\)</span>: <span class="math notranslate nohighlight">\(x\)</span> is Irish</p>
-<p>a) Some people are logical [<span class="math notranslate nohighlight">\(\forall\)</span>].<br />
-b) All computer scientists are logical [<span class="math notranslate nohighlight">\(\exists\)</span>].<br />
-c) Some Irish people are computer scientists [<span class="math notranslate nohighlight">\(\forall\)</span>].<br />
-d) Some logical people are Irish computer scientists [<span class="math notranslate nohighlight">\(\forall\)</span>].<br />
-e) All Irish computer scientists are logical but not all Irish people are Computer Scientists[<span class="math notranslate nohighlight">\(\exists\)</span>].<br />
-f) Some logical people are not computer scientists [<span class="math notranslate nohighlight">\(\forall\)</span>].<br />
-g) Not all Irish people are computer scientists [<span class="math notranslate nohighlight">\(\exists\)</span>].<br />
-h) There are no computer scientists who are not logical [<span class="math notranslate nohighlight">\(\forall\)</span>]</p>
+<p>a) Some people are logical [<span class="math notranslate nohighlight">\(\forall\)</span>].
+b) All computer scientists are logical [<span class="math notranslate nohighlight">\(\exists\)</span>].
+c) Some Irish people are computer scientists [<span class="math notranslate nohighlight">\(\forall\)</span>].
+d) Some logical people are Irish computer scientists [<span class="math notranslate nohighlight">\(\forall\)</span>].
+e) All Irish computer scientists are logical but not all Irish people are Computer Scientists[<span class="math notranslate nohighlight">\(\exists\)</span>].
+f) Some logical people are not computer scientists [<span class="math notranslate nohighlight">\(\forall\)</span>].
+g) Not all Irish people are computer scientists [<span class="math notranslate nohighlight">\(\exists\)</span>].
+h) There are no computer scientists who are not logical [<span class="math notranslate nohighlight">\(\forall\)</span>].</p>
 </li>
 </ul>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text"><strong>Solutions</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">a) <span class="math notranslate nohighlight">\(\lnot\forall\ x\ [\lnot L(x)]\)</span> .
-b) <span class="math notranslate nohighlight">\(\lnot\exists\ x\ [\lnot(C(x)\land L(x))]\)</span><br />
-c) <span class="math notranslate nohighlight">\(\lnot\forall\ x\ [\lnot(I(x)\implies C(x))]\)</span><br />
-d) <span class="math notranslate nohighlight">\(\lnot\forall\ x\ [\lnot(L(x)\land I(x)\land C(x))]\)</span><br />
-e) <span class="math notranslate nohighlight">\(\lnot\exists\ x\ [\lnot(I(x)\land C(x) \implies L(x))]\ \land\ \exists\ x\ [\lnot(I(x)\land C(x))]\)</span><br />
-f) <span class="math notranslate nohighlight">\(\lnot\forall\ x\ [\lnot(L(x)\implies \lnot C(x))]\)</span><br />
-g) <span class="math notranslate nohighlight">\(\exists\ x\ [\lnot(I(x)\and C(x))]\)</span><br />
-h) <span class="math notranslate nohighlight">\(\forall\ x\ [\lnot(C(x)\implies \lnot L(x))]\)</span></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a) $\lnot\forall\ x\ [\lnot L(x)]$ . 
+b) $\lnot\exists\ x\ [\lnot(C(x)\land L(x))]$  
+c) $\lnot\forall\ x\ [\lnot(I(x)\implies C(x))]$  
+d) $\lnot\forall\ x\ [\lnot(L(x)\land I(x)\land C(x))]$  
+e) $\lnot\exists\ x\ [\lnot(I(x)\land C(x) \implies L(x))]\ \land\ \exists\ x\ [\lnot(I(x)\land C(x))]$    
+f) $\lnot\forall\ x\ [\lnot(L(x)\implies \lnot C(x))]$  
+g) $\exists\ x\ [\lnot(I(x)\and C(x))]$  
+h) $\forall\ x\ [\lnot(C(x)\implies \lnot L(x))]$
+</pre></div>
+</div>
 </div>
 </details><ol class="arabic" start="3">
 <li><p>State whether the following arguments are valid or invalid. You do not need to know the domain or interpretation to determine this.</p>
@@ -471,11 +474,13 @@ e) <span class="math notranslate nohighlight">\(\forall(x) [P(x)]\ :\ \lnot\exis
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text"><strong>Solutions</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">a) This is a valid argument, by <span class="math notranslate nohighlight">\(\land\)</span>-elimination.
-b) This is invalid. We cannot conclude anything about what is true <span class="math notranslate nohighlight">\(\forall(x)\)</span> from this premise.
-c) This is invalid. The premise could be true if <span class="math notranslate nohighlight">\(\forall(x)[P(x)]\)</span> and we cannot make this conclusion about <span class="math notranslate nohighlight">\(Q(x)\)</span>.
-d) This is invalid. <span class="math notranslate nohighlight">\(\exists(x) [\lnot Q(x)]\)</span> is true if <span class="math notranslate nohighlight">\(\forall(x) [\lnot Q(x)]\)</span>, which would not invalidate the conclusion.
-e) This is valid. If <span class="math notranslate nohighlight">\(P(x)\)</span> is true for all <span class="math notranslate nohighlight">\(x\)</span>, then there cannot be an <span class="math notranslate nohighlight">\(x\)</span> for which <span class="math notranslate nohighlight">\(P(x)\)</span> is false.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a) This is a valid argument, by $\land$-elimination.
+b) This is invalid. We cannot conclude anything about what is true $\forall(x)$ from this premise.
+c) This is invalid. The premise could be true if $\forall(x)[P(x)]$ and we cannot make this conclusion about $Q(x)$.
+d) This is invalid. $\exists(x) [\lnot Q(x)]$ is true if $\forall(x) [\lnot Q(x)]$, which would not invalidate the conclusion.
+e) This is valid. If $P(x)$ is true for all $x$, then there cannot be an $x$ for which $P(x)$ is false.
+</pre></div>
+</div>
 </div>
 </details></section>
 
