@@ -23,7 +23,19 @@ parts:
       - file: Part1/14. Exercises 7 Proof and Search.md
       - file: Part1/15. First Order Logic.md
       - file: Part1/16. Exercises 8 First Order Logic.md
-      
+  - caption: Graphical Representations of Knowledge
+    chapters:
+    - file: Part2/0. Intro to Knowledge Graphs.md
+      sections:
+      - file: Part2/1. Knowledge Graphs.md
+      - file: Part2/2. Exercises 9 Designing a Knowledge Graph.md
+      - file: Part2/3. Graphs.md
+      - file: Part2/4. Ontologies.md
+      - file: Part2/5. Exercises 10 Creating an Ontology.md
+      - file: Part2/6. Creating a Knowledge Graph in OWLReady2 nocode.ipynb
+      - file: Part2/7. Exercise 11 Extending a knowledge graph.md
+      - file: Part2/8. Advanced Features of OWLReady2.ipynb
+      - file: Part2/9. Exercises 12 Implementing a complete ontology.ipynb
 #  - caption: Organising Knowledge with Graphs
 #    chapters:
 #    - file: 2. Knowledge Graphs and Ontologies
