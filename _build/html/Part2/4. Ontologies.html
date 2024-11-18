@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Ontologies &#8212; ECS8052 Knowledge Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part2/4. Ontologies';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Creating a Knowledge Graph in OWLReady2" href="6.%20Creating%20a%20Knowledge%20Graph%20in%20OWLReady2%20nocode.html" />
+    <link rel="prev" title="Why do we need graphs?" href="3.%20Graphs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="ECS8052 Knowledge Engineering - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="ECS8052 Knowledge Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to ECS8052 Knowledge Engineering
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representing and Discovering Knowledge with Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part1/1.%20LogicAndAI.html">Introduction to Logic in Artificial Intelligence</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/2.%20Exercise%201%20Are%20you%20Logical.html">Exercise 1: Are you Logical?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/3.%20LogicalReasoning.html">Logic and Knowledge</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../Part1/4.%20Exercise%202%20Elementary%20my%20dear%20Watson.html">Exercise 2: Elementary, my dear Watson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/5.%20Formal%20Propositional%20Logic.html">Making Logical Arguments Formal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/6.%20Exercise%203%20Formal%20Dinners.html">Exercise 3: Formal Dinners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/7.%20Proving%20Arguments.html">Proving Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/8.%20Exercise%204%20Natural%20Deduction.html">Exercise 4: Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/9.%20Kanren%20Tutorial%20nocode.html">Logic Programming in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/10.%20Exercises%205%20Kanren%20nocode.html">Exercises 5: Using Kanren to Solve Logic Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/11.%20Automating%20Natural%20Deduction.html">Automating Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/12.%20Exercise%206%20Automating%20Natural%20Deduction.html">Exercise 6: Automating Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/13.%20Proof%20and%20Search.html">Proof and Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/14.%20Exercises%207%20Proof%20and%20Search.html">Exercise 7: Proof and Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/15.%20First%20Order%20Logic.html">First Order Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/16.%20Exercises%208%20First%20Order%20Logic.html">Exercises 8: First Order Logic</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphical Representations of Knowledge</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.%20Intro%20to%20Knowledge%20Graphs.html">Introduction to Knowledge Graphs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1.%20Knowledge%20Graphs.html">Knowledge Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.%20Exercises%209%20Designing%20a%20Knowledge%20Graph.html">Exercise 9: Designing a Simple Knowledge Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.%20Graphs.html">Why do we need graphs?</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Ontologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.%20Creating%20a%20Knowledge%20Graph%20in%20OWLReady2%20nocode.html">Creating a Knowledge Graph in OWLReady2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7.%20Exercise%2011%20Extending%20a%20knowledge%20graph.html">Exercises 11: Extending a Knowledge Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8.%20Advanced%20Features%20of%20OWLReady2.html">Advanced Features of OWLReady2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9.%20Exercises%2012%20Implementing%20a%20complete%20ontology.html">Exercises 12: Implementing a Complete Ontology</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart2/4. Ontologies.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Part2/4. Ontologies.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ontologies</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ontology-representations">Ontology Representations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-representations">Graphical representations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triples-based-formats">Triples-based formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-triples-markup">N-Triples Markup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turtle-terse-rdf-triple-language">Turtle: Terse RDF Triple Language</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rdf-xml">RDF/XML</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ontologies">
+<h1>Ontologies<a class="headerlink" href="#ontologies" title="Link to this heading">#</a></h1>
+<p>Central to the creation of knowledge graphs is the notion of a <em>grammar</em> that the graph must obey. Just as grammars for languages determine that whilst the phrase “the quick brown fox jumped over the lazy dog” is properly constructed, the phrase “fox the brown quick over jumped dog lazy the” is not, an ontology specifies what a properly constructed graph must look like. Just as different languages have different grammars, so do different knowledge graphs.</p>
+<p>An ontology for a knowledge graph will typically provide a formal specification of the following:</p>
+<ul class="simple">
+<li><p>What types of entities/nodes and edges are allowed.</p></li>
+<li><p>What types of node can be connected by each type of edge.</p></li>
+<li><p>What attributes each type of node and edge can have.</p></li>
+</ul>
+<p>The ontology is usually derived from domain knowledge. For example, in a graph of medical conditions, it would not make sense to have nodes of type <code class="docutils literal notranslate"><span class="pre">organ</span></code> and <code class="docutils literal notranslate"><span class="pre">gene</span></code> connected by a relation of type <code class="docutils literal notranslate"><span class="pre">is_treated</span> <span class="pre">by</span></code>, whereas this relation would be perfectly reasonable between nodes of type <code class="docutils literal notranslate"><span class="pre">disease</span></code> and <code class="docutils literal notranslate"><span class="pre">drug</span></code>.</p>
+<p>Ontologies specify only the general structure of the graph, what it contains, what can be connected etc. In our earlier example, it would specify that there are entities/nodes for <code class="docutils literal notranslate"><span class="pre">programs</span></code>, <code class="docutils literal notranslate"><span class="pre">modules</span></code>, <code class="docutils literal notranslate"><span class="pre">staff</span></code>, and <code class="docutils literal notranslate"><span class="pre">students</span></code>, and it would specifify which of these nodes can be in a relationship. What the ontology does not do, however, is specify the data itself. This is  added according to the design defined by the ontology, but does not make up part of the ontology itself.</p>
+<section id="ontology-representations">
+<h2>Ontology Representations<a class="headerlink" href="#ontology-representations" title="Link to this heading">#</a></h2>
+<section id="graphical-representations">
+<h3>Graphical representations<a class="headerlink" href="#graphical-representations" title="Link to this heading">#</a></h3>
+<p>One of the most common ways to represent an ontology is diagrammatically. We have seen several examples of informal diagrammatic approaches, and these will continue to be the mainstay of our approach. There are, however, other more formal diagrammatic approaches. These can be extremely useful and powerful because a formall diagram can be parsed by software to automatically generate a formal specification in one of the other formats. Perhaps the most common format for such diagrams is <em>UML</em> - Unified Modelling Language. This was originally devised for use in modelling of software systems, but it provides all of the mechanisms necessary for modelling knowledge graphs and are often used by practising software engineers who need to model data because of their familiarity with the diagrammatic style.</p>
+<p>Most software engineering practioners do not use formal UML in practice, preferring instead to use informal diagrams that borrow some features from UML where theyt help to express the problem. We will share in this spirit and informal diagrams will be our main tool for designing knowledge graphs. Where this approach breaks down though, is when we need a formal representation of the graph so that it can be implemented. For this, formal approaches to representing the ontology are required.</p>
+</section>
+<section id="triples-based-formats">
+<h3>Triples-based formats<a class="headerlink" href="#triples-based-formats" title="Link to this heading">#</a></h3>
+<p>Perhaps the simplest way to represent knowledge graphs is so-called <em>triples</em>-based formats. In this format, the graph is represented simply as triples of <code class="docutils literal notranslate"><span class="pre">(relation,</span> <span class="pre">source</span> <span class="pre">entitiy,</span> <span class="pre">target</span> <span class="pre">entity)</span></code>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">is_a</span><span class="p">,</span> <span class="n">dog</span><span class="p">,</span> <span class="n">mammal</span><span class="p">)</span>
+<span class="p">(</span><span class="n">is_a</span><span class="p">,</span> <span class="n">cat</span><span class="p">,</span> <span class="n">mammal</span><span class="p">)</span>
+<span class="p">(</span><span class="n">chases</span><span class="p">,</span> <span class="n">dog</span><span class="p">,</span> <span class="n">cat</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(Can you draw the graph of this?)</p>
+<p>This format, with some modifications, is extremely widely used, and we will look at several examples of this. Very often, the triple will be extended into a general <span class="math notranslate nohighlight">\(n\)</span>-tuple in which additional elements represent other aspects of the relation. Properties of the entities will often be recorded in a separate file. This format is often widely used to distribute graphs themselves, and not just their ontology.</p>
+<p>This representation has the distinct advantage of being very easy to parse, and can be translated almost directly into a computer program. However, it has the disadvantage of not containing any explanations. For this, mark-up languages are often used instead.</p>
+</section>
+<section id="n-triples-markup">
+<h3>N-Triples Markup<a class="headerlink" href="#n-triples-markup" title="Link to this heading">#</a></h3>
+<p>An extension of the <span class="math notranslate nohighlight">\(N\)</span>-triples format introduces a mark-up element which provides explanatory context. This representations was originally designed for representing meta-data on the world-wide web. Accordingly, much of the specification is in terms of URLs. Here is an example drawn from the <a class="reference external" href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/">W3C RDF Primer</a> which can perhaps be considered as the canonical reference on this topic. It describes a web resource that makes statements “there is a Person identified by <a class="reference external" href="http://www.w3.org/People/EM/contact#me">http://www.w3.org/People/EM/contact#me</a>, whose name is Eric Miller, whose email address is e.miller123(at)example (changed for security purposes), and whose title is Dr.” In the N-Triples format,</p>
+<ul class="simple">
+<li><p>The first element of the triple is the <em>subject</em> (in this case, a web page).</p></li>
+<li><p>The second element is a <em>predicate</em>, also specified as a URL, that specified  the nature of the relation.</p></li>
+<li><p>The third element is the <em>object</em>, which could be a URL or could be a literal.</p></li>
+<li><p>Each triple is terminated with a period (.)</p></li>
+</ul>
+<p>The N-Triples representation of this example is therefore:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">People</span><span class="o">/</span><span class="n">EM</span><span class="o">/</span><span class="n">contact</span><span class="c1">#me&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt;             &lt;http://www.w3.org/2000/10/swap/pim/contact#Person&gt; .</span>
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">People</span><span class="o">/</span><span class="n">EM</span><span class="o">/</span><span class="n">contact</span><span class="c1">#me&gt; &lt;http://www.w3.org/2000/10/swap/pim/contact#fullName&gt;         &quot;Eric Miller&quot; .</span>
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">People</span><span class="o">/</span><span class="n">EM</span><span class="o">/</span><span class="n">contact</span><span class="c1">#me&gt; &lt;http://www.w3.org/2000/10/swap/pim/contact#mailbox&gt;          &lt;mailto:em@w3.org&gt; .</span>
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">People</span><span class="o">/</span><span class="n">EM</span><span class="o">/</span><span class="n">contact</span><span class="c1">#me&gt; &lt;http://www.w3.org/2000/10/swap/pim/contact#personalTitle&gt;    &quot;Dr.&quot; .</span>
+</pre></div>
+</div>
+<p>This representation is very easy to parse, but is extremely verbose and lacks structure and explanation. For this reason, other formats are often preferred.</p>
+</section>
+<section id="turtle-terse-rdf-triple-language">
+<h3>Turtle: Terse RDF Triple Language<a class="headerlink" href="#turtle-terse-rdf-triple-language" title="Link to this heading">#</a></h3>
+<p>The Turtle format is a little less verbose then the N-Triples format. It support the use of namespaces via a <code class="docutils literal notranslate"><span class="pre">prefix</span></code> statement, and nesting to allow the subject to be defined only once. Here is the same information in the Turtle format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@prefix</span> <span class="n">ns0</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">2000</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="n">swap</span><span class="o">/</span><span class="n">pim</span><span class="o">/</span><span class="n">contact</span><span class="c1">#&gt; .</span>
+
+<span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">People</span><span class="o">/</span><span class="n">EM</span><span class="o">/</span><span class="n">contact</span><span class="c1">#me&gt;</span>
+  <span class="n">a</span> <span class="o">&lt;</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">2000</span><span class="o">/</span><span class="mi">10</span><span class="o">/</span><span class="n">swap</span><span class="o">/</span><span class="n">pim</span><span class="o">/</span><span class="n">contact</span><span class="c1">#Person&gt; ;</span>
+  <span class="n">ns0</span><span class="p">:</span><span class="n">fullName</span> <span class="s2">&quot;Eric Miller&quot;</span> <span class="p">;</span>
+  <span class="n">ns0</span><span class="p">:</span><span class="n">mailbox</span> <span class="o">&lt;</span><span class="n">mailto</span><span class="p">:</span><span class="n">em</span><span class="nd">@w3</span><span class="o">.</span><span class="n">org</span><span class="o">&gt;</span> <span class="p">;</span>
+  <span class="n">ns0</span><span class="p">:</span><span class="n">personalTitle</span> <span class="s2">&quot;Dr.&quot;</span> <span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="rdf-xml">
+<h3>RDF/XML<a class="headerlink" href="#rdf-xml" title="Link to this heading">#</a></h3>
+<p>A very common data format for ontologies and knowledge graphs is the RDF/XML format</p>
+<?xml version="1.0"?>
+<p>&lt;rdf:RDF xmlns:rdf=”<a class="reference external" href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a>”
+xmlns:contact=”<a class="reference external" href="http://www.w3.org/2000/10/swap/pim/contact#">http://www.w3.org/2000/10/swap/pim/contact#</a>”&gt;</p>
+<p>&lt;contact:Person rdf:about=”<a class="reference external" href="http://www.w3.org/People/EM/contact#me">http://www.w3.org/People/EM/contact#me</a>”&gt;
+<a class="reference external" href="contact:fullName">contact:fullName</a>Eric Miller&lt;/contact:fullName&gt;
+&lt;contact:mailbox <a class="reference external" href="mailto:rdf:resource=%22mailto:em&#37;&#52;&#48;w3&#46;org">rdf:resource=”mailto:em<span>&#64;</span>w3<span>&#46;</span>org</a>”/&gt;
+<a class="reference external" href="contact:personalTitle">contact:personalTitle</a>Dr.&lt;/contact:personalTitle&gt;
+&lt;/contact:Person&gt;</p>
+<p>&lt;/rdf:RDF&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+Careful scrutiny of this reveals the similarity between this and the Turtle format. The use of XML rather than a bespokje format allows the use of the huge variety of XML tools that are available for parsing, validation etc.
+
+A useful [online converter](https://www.easyrdf.org/converter) is available to translate between these representations. 
+
+### OWL: Ontology Web Language
+
+OWL, the Web Ontology Language, is an extension of the RDF/XML format that provides a rich set of pre-defined semantics. The full OWL specification is far too complex to consider in this module, but we can see easily how OWL ontologies are specified using a simple example:
+
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+         xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema#&quot;
+         xmlns:rdfs=&quot;http://www.w3.org/2000/01/rdf-schema#&quot;
+         xmlns:owl=&quot;http://www.w3.org/2002/07/owl#&quot;
+         xml:base=&quot;http://www.dummy.info/new.owl&quot;
+         xmlns=&quot;http://www.dummy.info/new.owl#&quot;&gt;
+
+&lt;owl:Ontology rdf:about=&quot;http://www.dummy.info/new.owl&quot;/&gt;
+
+&lt;owl:Class rdf:about=&quot;#Animal&quot;&gt;
+  &lt;rdfs:subClassOf rdf:resource=&quot;http://www.w3.org/2002/07/owl#Thing&quot;/&gt;
+&lt;/owl:Class&gt;
+
+&lt;owl:Class rdf:about=&quot;#Dog&quot;&gt;
+  &lt;rdfs:subClassOf rdf:resource=&quot;http://www.w3.org/2002/07/owl#Thing&quot;/&gt;
+&lt;/owl:Class&gt;
+
+&lt;owl:Class rdf:about=&quot;#Cat&quot;&gt;
+  &lt;rdfs:subClassOf rdf:resource=&quot;http://www.w3.org/2002/07/owl#Thing&quot;/&gt;
+&lt;/owl:Class&gt;
+
+&lt;owl:ObjectProperty rdf:about=&quot;#is_a&quot;&gt;
+  &lt;rdfs:domain rdf:resource=&quot;#Dog&quot;/&gt;
+  &lt;rdfs:range rdf:resource=&quot;#Animal&quot;/&gt;
+&lt;/owl:ObjectProperty&gt;
+
+&lt;owl:ObjectProperty rdf:about=&quot;#is_a&quot;&gt;
+  &lt;rdfs:domain rdf:resource=&quot;#Cat&quot;/&gt;
+  &lt;rdfs:range rdf:resource=&quot;#Animal&quot;/&gt;
+&lt;/owl:ObjectProperty&gt;
+
+&lt;owl:ObjectProperty rdf:about=&quot;#chases&quot;&gt;
+  &lt;rdfs:domain rdf:resource=&quot;#Dog&quot;/&gt;
+  &lt;rdfs:range rdf:resource=&quot;#Cat&quot;/&gt;
+&lt;/owl:ObjectProperty&gt;
+
+&lt;/rdf:RDF&gt;
+In practice, we will almost never work with these representations directly because there are better tools available for working with knowledge graphs. We will soon introduce a Python-based tool for just that. 
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Part2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3.%20Graphs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Why do we need graphs?</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="6.%20Creating%20a%20Knowledge%20Graph%20in%20OWLReady2%20nocode.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Creating a Knowledge Graph in OWLReady2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ontology-representations">Ontology Representations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-representations">Graphical representations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triples-based-formats">Triples-based formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-triples-markup">N-Triples Markup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turtle-terse-rdf-triple-language">Turtle: Terse RDF Triple Language</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rdf-xml">RDF/XML</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Iain Styles
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
