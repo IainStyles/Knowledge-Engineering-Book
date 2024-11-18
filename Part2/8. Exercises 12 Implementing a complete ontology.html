@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction to Knowledge Graphs &#8212; ECS8052 Knowledge Engineering</title>
+    <title>Exercises 12: Implementing a Complete Ontology &#8212; ECS8052 Knowledge Engineering</title>
   
   
   
@@ -57,13 +57,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Part2/0. Intro to Knowledge Graphs';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part2/8. Exercises 12 Implementing a complete ontology';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Knowledge Graphs" href="1.%20Knowledge%20Graphs.html" />
-    <link rel="prev" title="Exercises 8: First Order Logic" href="../Part1/16.%20Exercises%208%20First%20Order%20Logic.html" />
+    <link rel="prev" title="Exercises 11: Extending a Knowledge Graph" href="7.%20Exercise%2011%20Extending%20a%20knowledge%20graph.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -205,7 +202,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphical Representations of Knowledge</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Introduction to Knowledge Graphs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.%20Intro%20to%20Knowledge%20Graphs.html">Introduction to Knowledge Graphs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="1.%20Knowledge%20Graphs.html">Knowledge Graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.%20Exercises%209%20Designing%20a%20Knowledge%20Graph.html">Exercise 9: Designing a Simple Knowledge Graph</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.%20Graphs.html">Why do we need graphs?</a></li>
@@ -213,7 +210,7 @@
 <li class="toctree-l2"><a class="reference internal" href="5.%20Exercises%2010%20Creating%20an%20Ontology.html">Exercises 10: Creating an Ontology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="6.%20Creating%20a%20Knowledge%20Graph%20in%20OWLReady2%20nocode.html">Creating a Knowledge Graph in OWLReady2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.%20Exercise%2011%20Extending%20a%20knowledge%20graph.html">Exercises 11: Extending a Knowledge Graph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="8.%20Exercises%2012%20Implementing%20a%20complete%20ontology.html">Exercises 12: Implementing a Complete Ontology</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercises 12: Implementing a Complete Ontology</a></li>
 </ul>
 </details></li>
 </ul>
@@ -287,7 +284,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart2/0. Intro to Knowledge Graphs.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart2/8. Exercises 12 Implementing a complete ontology.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -317,7 +314,7 @@
       
       
       
-      <li><a href="../_sources/Part2/0. Intro to Knowledge Graphs.md" target="_blank"
+      <li><a href="../_sources/Part2/8. Exercises 12 Implementing a complete ontology.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -399,7 +396,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction to Knowledge Graphs</h1>
+    <h1>Exercises 12: Implementing a Complete Ontology</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -413,18 +410,49 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-knowledge-graphs">
-<h1>Introduction to Knowledge Graphs<a class="headerlink" href="#introduction-to-knowledge-graphs" title="Link to this heading">#</a></h1>
-<p>In this section we will study graphical representations of knowledge. This will include:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-12-implementing-a-complete-ontology">
+<h1>Exercises 12: Implementing a Complete Ontology<a class="headerlink" href="#exercises-12-implementing-a-complete-ontology" title="Link to this heading">#</a></h1>
+<p>You were introduced to the following problem in Exercise 10. Your task in this Exercise is to implement this knowledge base in OWLReady2. You may fine it helpful to refer to the <a class="reference external" href="https://owlready2.readthedocs.io">full documentation</a>.</p>
+<p>Consider the following (fictitious) problem. You are designing a knowledge base for a medical practice. The knowledge base needs to model a range of diseases, their symptoms, and potential medicines that could be used to treat them. To help with the design of the knowledge graph, the practice has provided you with some representative examples of the knowledge that the graph needs to be able to represent. Given this knowledge, can you design an ontology (in graphical form) that could be used to represent this knowledge, and future knowledge that might be added later.</p>
+<p>The diseases are:</p>
 <ul class="simple">
-<li><p>Definition of a Knowledge Graph</p></li>
-<li><p>Advantages of Knowledge Graphs over other representations</p></li>
-<li><p>Ontologies</p></li>
-<li><p>Tools for creating and reasoning on knowledge graphs</p></li>
-<li><p>Plenty of practical exercises.</p></li>
+<li><p>Acidulitis</p></li>
+<li><p>Brachioma</p></li>
+<li><p>Calicosis</p></li>
+<li><p>Divertigo</p></li>
+<li><p>Ecnomia</p></li>
 </ul>
-<div class="toctree-wrapper compound">
-</div>
+<p>Symptoms include:</p>
+<ul class="simple">
+<li><p>Fever</p></li>
+<li><p>Glandular swelling</p></li>
+<li><p>Headache</p></li>
+<li><p>Itching</p></li>
+<li><p>Jaundice</p></li>
+</ul>
+<p>Available treatments are:</p>
+<ul class="simple">
+<li><p>Kaloxin</p></li>
+<li><p>Lorapix</p></li>
+<li><p>Manigel</p></li>
+<li><p>Nimbalex</p></li>
+<li><p>Optinox</p></li>
+</ul>
+<p>The following facts are known</p>
+<ul class="simple">
+<li><p>The symptoms of Acidulitis are Headache and/or Itching, without Glandular Swelling.</p></li>
+<li><p>One of Brachioma’s symptoms is Fever.</p></li>
+<li><p>Patients with Calicosis should not take Optinox.</p></li>
+<li><p>The symptoms of Divertigo are Glandular Swelling with either Itching and/or Jaundice.</p></li>
+<li><p>The symptoms of Ecnomia’s are Fever with Glandular Swelling and/or Jaundice.</p></li>
+<li><p>Itching is a symptom of either Divertigo or Ecnomia.</p></li>
+<li><p>Kaloxin should not be used if Fever is a symptom.</p></li>
+<li><p>Lorapix should not be used if Jaundice is a symptom.</p></li>
+<li><p>Manigel and Optinox should never be used together.</p></li>
+<li><p>Headaches can be treated with either Lorapix or Nimbalex.</p></li>
+<li><p>Headache is not a symptom of Ecnomia.</p></li>
+<li><p>Kaloxin and Nimbalex should never be used together.</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -458,22 +486,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Part1/16.%20Exercises%208%20First%20Order%20Logic.html"
+       href="7.%20Exercise%2011%20Extending%20a%20knowledge%20graph.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exercises 8: First Order Logic</p>
+        <p class="prev-next-title">Exercises 11: Extending a Knowledge Graph</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="1.%20Knowledge%20Graphs.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Knowledge Graphs</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
