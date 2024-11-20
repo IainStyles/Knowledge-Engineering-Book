@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercise 2: Elementary, my dear Watson &#8212; ECS8052 Knowledge Engineering</title>
+    <title>Reasoning under Uncertainty &#8212; ECS8052 Knowledge Engineering</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -57,11 +57,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Part1/4. Exercise 2 Elementary my dear Watson';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/0. Reasoning under Uncertainty';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Making Logical Arguments Formal" href="5.%20Formal%20Propositional%20Logic.html" />
-    <link rel="prev" title="Logic and Knowledge" href="3.%20LogicalReasoning.html" />
+    <link rel="next" title="Introduction to Probabilistic Reasoning" href="1.%20Probabilistic%20Reasoning.html" />
+    <link rel="prev" title="Practical: Solution to The HALD Knowledge Graph" href="../Part2/9b.%20HALD%20Practical%20Solution.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,24 +182,51 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representing and Discovering Knowledge with Logic</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="1.%20LogicAndAI.html">Introduction to Logic in Artificial Intelligence</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%201%20Are%20you%20Logical.html">Exercise 1: Are you Logical?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.%20LogicalReasoning.html">Logic and Knowledge</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part1/1.%20LogicAndAI.html">Introduction to Logic in Artificial Intelligence</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/2.%20Exercise%201%20Are%20you%20Logical.html">Exercise 1: Are you Logical?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/3.%20LogicalReasoning.html">Logic and Knowledge</a></li>
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercise 2: Elementary, my dear Watson</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.%20Formal%20Propositional%20Logic.html">Making Logical Arguments Formal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.%20Exercise%203%20Formal%20Dinners.html">Exercise 3: Formal Dinners</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.%20Proving%20Arguments.html">Proving Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="8.%20Exercise%204%20Natural%20Deduction.html">Exercise 4: Natural Deduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="9.%20Kanren%20Tutorial%20nocode.html">Logic Programming in Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10.%20Exercises%205%20Kanren%20nocode.html">Exercises 5: Using Kanren to Solve Logic Problems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="11.%20Automating%20Natural%20Deduction.html">Automating Natural Deduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12.%20Exercise%206%20Automating%20Natural%20Deduction.html">Exercise 6: Automating Natural Deduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="13.%20Proof%20and%20Search.html">Proof and Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="14.%20Exercises%207%20Proof%20and%20Search.html">Exercise 7: Proof and Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="15.%20First%20Order%20Logic.html">First Order Logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="16.%20Exercises%208%20First%20Order%20Logic.html">Exercises 8: First Order Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/4.%20Exercise%202%20Elementary%20my%20dear%20Watson.html">Exercise 2: Elementary, my dear Watson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/5.%20Formal%20Propositional%20Logic.html">Making Logical Arguments Formal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/6.%20Exercise%203%20Formal%20Dinners.html">Exercise 3: Formal Dinners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/7.%20Proving%20Arguments.html">Proving Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/8.%20Exercise%204%20Natural%20Deduction.html">Exercise 4: Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/9.%20Kanren%20Tutorial%20nocode.html">Logic Programming in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/10.%20Exercises%205%20Kanren%20nocode.html">Exercises 5: Using Kanren to Solve Logic Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/11.%20Automating%20Natural%20Deduction.html">Automating Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/12.%20Exercise%206%20Automating%20Natural%20Deduction.html">Exercise 6: Automating Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/13.%20Proof%20and%20Search.html">Proof and Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/14.%20Exercises%207%20Proof%20and%20Search.html">Exercise 7: Proof and Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/15.%20First%20Order%20Logic.html">First Order Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/16.%20Exercises%208%20First%20Order%20Logic.html">Exercises 8: First Order Logic</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphical Representations of Knowledge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part2/0.%20Intro%20to%20Knowledge%20Graphs.html">Introduction to Knowledge Graphs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/1.%20Knowledge%20Graphs.html">Knowledge Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/2.%20Exercises%209%20Designing%20a%20Knowledge%20Graph.html">Exercise 9: Designing a Simple Knowledge Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/3.%20Graphs.html">Why do we need graphs?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/4.%20Ontologies.html">Ontologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/5.%20Exercises%2010%20Creating%20an%20Ontology.html">Exercises 10: Creating an Ontology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/6.%20Creating%20a%20Knowledge%20Graph%20in%20OWLReady2%20nocode.html">Practical: Creating a Knowledge Graph in OWLReady2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/6a.%20Creating%20a%20Knowledge%20Graph%20in%20OWLReady2.html">Practical Solution: Creating a Knowledge Graph in OWLReady2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/7.%20Exercise%2011%20Extending%20a%20Knowledge%20Graph.html">Exercises 11: Extending a Knowledge Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/7a.%20Exercise%2011%20Extending%20a%20Knowledge%20Graph%20Solution.html">Exercise 11: Solution Extending a Knowledge Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/8.%20Exercises%2012%20Implementing%20a%20complete%20ontology.html">Exercises 12: Implementing a Complete Ontology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/8a.%20Exercises%2012%20Implementing%20a%20complete%20ontology%20Solution.html">Exercises 12: Solution to Implementing a Complete Ontology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/9.%20HALD%20Practical.html">Practical: The HALD Knowledge Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/9a.%20Dynamic%20Graph%20Creation.html">Example of dynamic network creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/9b.%20HALD%20Practical%20Solution.html">Practical: Solution to The HALD Knowledge Graph</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reasoning under Uncertainty</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="1.%20Probabilistic%20Reasoning.html">Introduction to Probabilistic Reasoning</a></li>
 </ul>
 </details></li>
 </ul>
@@ -271,7 +300,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart1/4. Exercise 2 Elementary my dear Watson.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/0. Reasoning under Uncertainty.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -301,7 +330,7 @@
       
       
       
-      <li><a href="../_sources/Part1/4. Exercise 2 Elementary my dear Watson.md" target="_blank"
+      <li><a href="../_sources/Part3/0. Reasoning under Uncertainty.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,7 +412,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 2: Elementary, my dear Watson</h1>
+    <h1>Reasoning under Uncertainty</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -397,71 +426,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-2-elementary-my-dear-watson">
-<h1>Exercise 2: Elementary, my dear Watson<a class="headerlink" href="#exercise-2-elementary-my-dear-watson" title="Link to this heading">#</a></h1>
-<ol class="arabic">
-<li><p>Which of the following statements are <em>propositions</em>?</p>
-<p>a) The sun does not shine at night.<br />
-b) All dogs are brown.<br />
-c) Go over there.<br />
-d) The book was on the table.<br />
-e) It takes 3 minutes to soft-boil an egg.<br />
-f) Dogs chase cats.<br />
-g) If it is daytime and there are no clouds then the sky is blue.<br />
-h) It was raining and I got wet.<br />
-i) The pan is hot so don’t put it on the worktop.<br />
-j) Who needs enemies when you have friends like that?</p>
-</li>
-</ol>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text"><strong>Solution</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Propositions are statements of fact. All of the statements state facts except for (c) and (i) which are instructions, and (j) which is a question.</p>
-<p class="sd-card-text">Note that the truth of a sentence does not determine whether it is a proposition of not, so statement (b) is a proposition, but is one that is False.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="reasoning-under-uncertainty">
+<h1>Reasoning under Uncertainty<a class="headerlink" href="#reasoning-under-uncertainty" title="Link to this heading">#</a></h1>
+<p>Logic and Knowledge Graphs enable us to represent statements of fact, but we do not always have complete knowledge of the world and our knowledge is often uncertain. In this sectin we will develop techniques for represnting and reasoning over knowledge that is subject to uncertainty, developing a class of probabilistic models known as Bayesian Networks that will allow us to efficiently make inferences over uncertain knowledge.</p>
+<div class="toctree-wrapper compound">
 </div>
-</details><ol class="arabic" start="2">
-<li><p>Identify the atomic propositions in the following statements</p>
-<p>a) If it is daytime and there are no clouds then the sky is blue.<br />
-b) Headaches can be treated with Aspirin or Paracetamol.<br />
-c) Birds and Bats can both fly.</p>
-</li>
-</ol>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text"><strong>Solution</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">a) (“it is daytime”, “there are no clouds”, “the sky is blue”).<br />
-b) (“Headaches can be treated with Aspirin”, “Headaches can be treated with paracetamol”).<br />
-c) (“Birds can fly”, “Bats can fly”)</p>
-</div>
-</details><ol class="arabic" start="3">
-<li><p>Are the following arguments valid, sound, neither, or both?
-a)
-i) Birmingham is not a city in the country of Northern Ireland.<br />
-ii) QUB is not in the city of Birmingham.<br />
-iii) Therefore QUB is in the country of Northern Ireland.</p>
-<p>b)
-i) QUB is in the city of Birmingham.<br />
-ii) QUB is in the country of Northern Ireland.<br />
-iii) Therefore the city of Birmingham is in the country of Northern Ireland.</p>
-<p>c)
-i) If it is nighttime the sun does not shine.<br />
-ii) The sun is not shining. [you may assume this to be true]<br />
-iii) Therefore it is nighttime.</p>
-<p>d)
-i) If it is nighttime the sun does not shine.<br />
-ii) The sun is shining. [you may assume this to be true]<br />
-iii) Therefore it is not nighttime.</p>
-</li>
-</ol>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text"><strong>Solution</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">a) This is sound but not valid. The conclusion cannot be drawn from the premises.<br />
-b) This is a valid argument because the conclusion follows from the premises, but is not sound because the first premise is false.<br />
-c) This is sound (all premises are true) but it is not valid because the premises do not specify what the sun does when it is not nighttime. For example, the sun does not shine when it is cloudy during the daytime.<br />
-d) This is both valid and sound. The first premise means that the sun cannot shine at night.</p>
-</div>
-</details></section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -476,7 +446,7 @@ d) This is both valid and sound. The first premise means that the sun cannot shi
         },
         kernelOptions: {
             name: "python3",
-            path: "./Part1"
+            path: "./Part3"
         },
         predefinedOutput: true
     }
@@ -494,20 +464,20 @@ d) This is both valid and sound. The first premise means that the sun cannot shi
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="3.%20LogicalReasoning.html"
+       href="../Part2/9b.%20HALD%20Practical%20Solution.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Logic and Knowledge</p>
+        <p class="prev-next-title">Practical: Solution to The HALD Knowledge Graph</p>
       </div>
     </a>
     <a class="right-next"
-       href="5.%20Formal%20Propositional%20Logic.html"
+       href="1.%20Probabilistic%20Reasoning.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Making Logical Arguments Formal</p>
+        <p class="prev-next-title">Introduction to Probabilistic Reasoning</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

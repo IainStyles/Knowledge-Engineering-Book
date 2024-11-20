@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercises 5: Using Kanren to Solve Logic Problems &#8212; ECS8052 Knowledge Engineering</title>
+    <title>Introduction to Probabilistic Reasoning &#8212; ECS8052 Knowledge Engineering</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Part1/10. Exercises 5 Kanren nocode';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/1. Probabilistic Reasoning';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Automating Natural Deduction" href="11.%20Automating%20Natural%20Deduction.html" />
-    <link rel="prev" title="Logic Programming in Python" href="9.%20Kanren%20Tutorial%20nocode.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,6 +124,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,24 +182,24 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representing and Discovering Knowledge with Logic</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="1.%20LogicAndAI.html">Introduction to Logic in Artificial Intelligence</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%201%20Are%20you%20Logical.html">Exercise 1: Are you Logical?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.%20LogicalReasoning.html">Logic and Knowledge</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part1/1.%20LogicAndAI.html">Introduction to Logic in Artificial Intelligence</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/2.%20Exercise%201%20Are%20you%20Logical.html">Exercise 1: Are you Logical?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/3.%20LogicalReasoning.html">Logic and Knowledge</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="4.%20Exercise%202%20Elementary%20my%20dear%20Watson.html">Exercise 2: Elementary, my dear Watson</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.%20Formal%20Propositional%20Logic.html">Making Logical Arguments Formal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.%20Exercise%203%20Formal%20Dinners.html">Exercise 3: Formal Dinners</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.%20Proving%20Arguments.html">Proving Arguments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="8.%20Exercise%204%20Natural%20Deduction.html">Exercise 4: Natural Deduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="9.%20Kanren%20Tutorial%20nocode.html">Logic Programming in Python</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercises 5: Using Kanren to Solve Logic Problems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="11.%20Automating%20Natural%20Deduction.html">Automating Natural Deduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12.%20Exercise%206%20Automating%20Natural%20Deduction.html">Exercise 6: Automating Natural Deduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="13.%20Proof%20and%20Search.html">Proof and Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="14.%20Exercises%207%20Proof%20and%20Search.html">Exercise 7: Proof and Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="15.%20First%20Order%20Logic.html">First Order Logic</a></li>
-<li class="toctree-l2"><a class="reference internal" href="16.%20Exercises%208%20First%20Order%20Logic.html">Exercises 8: First Order Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/4.%20Exercise%202%20Elementary%20my%20dear%20Watson.html">Exercise 2: Elementary, my dear Watson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/5.%20Formal%20Propositional%20Logic.html">Making Logical Arguments Formal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/6.%20Exercise%203%20Formal%20Dinners.html">Exercise 3: Formal Dinners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/7.%20Proving%20Arguments.html">Proving Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/8.%20Exercise%204%20Natural%20Deduction.html">Exercise 4: Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/9.%20Kanren%20Tutorial%20nocode.html">Logic Programming in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/10.%20Exercises%205%20Kanren%20nocode.html">Exercises 5: Using Kanren to Solve Logic Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/11.%20Automating%20Natural%20Deduction.html">Automating Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/12.%20Exercise%206%20Automating%20Natural%20Deduction.html">Exercise 6: Automating Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/13.%20Proof%20and%20Search.html">Proof and Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/14.%20Exercises%207%20Proof%20and%20Search.html">Exercise 7: Proof and Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/15.%20First%20Order%20Logic.html">First Order Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/16.%20Exercises%208%20First%20Order%20Logic.html">Exercises 8: First Order Logic</a></li>
 </ul>
 </details></li>
 </ul>
@@ -271,7 +273,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart1/10. Exercises 5 Kanren nocode.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/1. Probabilistic Reasoning.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -301,7 +303,7 @@
       
       
       
-      <li><a href="../_sources/Part1/10. Exercises 5 Kanren nocode.ipynb" target="_blank"
+      <li><a href="../_sources/Part3/1. Probabilistic Reasoning.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -311,7 +313,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -385,7 +387,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercises 5: Using Kanren to Solve Logic Problems</h1>
+    <h1>Introduction to Probabilistic Reasoning</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -395,12 +397,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-royal-flush">A Royal Flush</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einstein-s-riddle">Einstein’s Riddle</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-of-definitions-from-probability-theory">Recap of definitions from Probability Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-joint-distribution">The Joint Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginalisation-and-the-sum-rule">Marginalisation and the Sum Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability">Conditional Probability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-product-rule">The Product Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independence">Independence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-rule">Bayes Rule</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-explosion">Parametric explosion</a></li>
 </ul>
             </nav>
         </div>
@@ -412,99 +418,63 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises-5-using-kanren-to-solve-logic-problems">
-<h1>Exercises 5: Using Kanren to Solve Logic Problems<a class="headerlink" href="#exercises-5-using-kanren-to-solve-logic-problems" title="Link to this heading">#</a></h1>
-<section id="id1">
-<h2><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Use Kanren to solve the following logic puzzle:</p>
-<p>Anjali, Brian, and Chen graduated from QUB on different days this summer. One of them studied French, one studied Geography, one read History. One scored a good 60%, one acheived a very good 65%, and the other an excellent 70%.</p>
-<p>We have acquired some knowledge about who studied what and what their marks were. However, our knowledge is incomplete. Here is what we know:</p>
-<ol class="arabic simple">
-<li><p>The person who studied French scored 65%.</p></li>
-<li><p>Anjali studied Geography.</p></li>
-<li><p>Brian’s mark was 60%.</p></li>
-</ol>
-<p>Who studied what, and what were their marks?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder for code</span>
-</pre></div>
-</div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-probabilistic-reasoning">
+<h1>Introduction to Probabilistic Reasoning<a class="headerlink" href="#introduction-to-probabilistic-reasoning" title="Link to this heading">#</a></h1>
+<p>Agents need to be able to handle uncertainty. Their knowledge of the world may be incomplete, or it may be imprecise. The logic-based approaches we have seen in this modules can handle incomplete knowledge by returning multiple possible solutions to a problem (no matter how implausible they may be), but they cannot handle imprecise knowledge.</p>
+<p>In the two previous modules you have studied in this course you have seen some simple examples of probabilistic reasoning. These problems have typically involved one or two random variables and you have been able to calculate a range of quantities related to the problem using relatively simple calculations. One of the main challenges with probabilistic reasoning is that as the number of random variables increases, the number of parameters increases much faster that the number of variables. Historically this made large probabilistic reasoning problems computationally intractable. Bayesian networks provide us with a way of dealing with this by allowing us to <em>factorise</em> a multivariate joint distribution and thus reduce the number of parameters.</p>
+<section id="recap-of-definitions-from-probability-theory">
+<h2>Recap of definitions from Probability Theory<a class="headerlink" href="#recap-of-definitions-from-probability-theory" title="Link to this heading">#</a></h2>
+<p>Let us briefly recall some key ideas and definitions which we will use in this section. These definitions are for discrete probability distributions; similar definitions exist for continuous distributions.</p>
+<section id="the-joint-distribution">
+<h3>The Joint Distribution<a class="headerlink" href="#the-joint-distribution" title="Link to this heading">#</a></h3>
+<p>The joint distribution of random variables <span class="math notranslate nohighlight">\(X_1, X_2,\dots, X_N\)</span> is written as</p>
+<p><span class="math notranslate nohighlight">\(P(\mathbf{X}) = P(X_1, X_2,\dots, X_N)\)</span></p>
+<p>With this notation, the probability that <span class="math notranslate nohighlight">\(X_1=x_1 \land X_2=y_2 \land \dots\land X_N=x_N\)</span> is</p>
+<p><span class="math notranslate nohighlight">\(P(\mathbf{X=\mathbf{x}}) = P(X_1=x_1, X_2=x_2,\dots, X_N=x_n)\)</span>.</p>
 </section>
-<section id="a-royal-flush">
-<h2>A Royal Flush<a class="headerlink" href="#a-royal-flush" title="Link to this heading">#</a></h2>
-<p>Given the following extract from a family tree, write functions that uses Kanren to</p>
-<ol class="arabic simple">
-<li><p>Find all siblings (brothers and sisters) of a given individual.</p></li>
-<li><p>Find all cousins of a given individual (cousins have the same grandparents).</p></li>
-<li><p>Find all ancestors of a given individual.</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder for code</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder for code</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder for code</span>
-</pre></div>
-</div>
-</div>
-</div>
+<section id="marginalisation-and-the-sum-rule">
+<h3>Marginalisation and the Sum Rule<a class="headerlink" href="#marginalisation-and-the-sum-rule" title="Link to this heading">#</a></h3>
+<p>If we wish to know the overall distribution of a subset of the random variables, we <em>marginalise</em> over the other variables. For example:</p>
+<p><span class="math notranslate nohighlight">\(P(X_j, X_k) = \sum_{i\neq j,k} P(X_1, X_2,\dots,X_N)\)</span></p>
 </section>
-<section id="einstein-s-riddle">
-<h2>Einstein’s Riddle<a class="headerlink" href="#einstein-s-riddle" title="Link to this heading">#</a></h2>
-<p>Write a Kanren program to solve Einsteins riddle. There are five houses in a row. Each house is a different colour and is owned by a person of a different nationality. Each person keeps a different animal as a pet, prefers a different drink, and smokes a different brand of cigarette. Fifteen facts are known about the people and their houses:</p>
-<ol class="arabic simple">
-<li><p>There are five houses.</p></li>
-<li><p>The Englishman lives in the red house.</p></li>
-<li><p>The Spaniard owns the dog.</p></li>
-<li><p>Coffee is drunk in the green house.</p></li>
-<li><p>The Ukrainian drinks tea.</p></li>
-<li><p>The green house is immediately to the right of the ivory house.</p></li>
-<li><p>The Old Gold smoker owns snails.</p></li>
-<li><p>Kools are smoked in the yellow house.</p></li>
-<li><p>Milk is drunk in the middle house.</p></li>
-<li><p>The Norwegian lives in the first house.</p></li>
-<li><p>The man who smokes Chesterfields lives in the house next to the man with the fox.</p></li>
-<li><p>Kools are smoked in the house next to the house where the horse is kept.</p></li>
-<li><p>The Lucky Strike smoker drinks orange juice.</p></li>
-<li><p>The Japanese smokes Parliaments.</p></li>
-<li><p>The Norwegian lives next to the blue house.</p></li>
-</ol>
-<p>Who drinks water? Who owns the zebra?</p>
-<section id="hints">
-<h3>Hints<a class="headerlink" href="#hints" title="Link to this heading">#</a></h3>
+<section id="conditional-probability">
+<h3>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Link to this heading">#</a></h3>
+<p>If we wish to know the distribution of a subset of the random variables at a <em>fixed value</em> of the other random variables, we compute the <em>conditional</em> probability as (for a two-variable example)</p>
+<p><span class="math notranslate nohighlight">\(P(X_i\vert X_j) = \frac{P(X_i, X_j)}{P(X_j)}\)</span></p>
+</section>
+<section id="the-product-rule">
+<h3>The Product Rule<a class="headerlink" href="#the-product-rule" title="Link to this heading">#</a></h3>
+<p>The product rule for two variable is written as:</p>
+<p><span class="math notranslate nohighlight">\(P(X_i,X_j) = P(X_i\vert X_j)P(X_j)\)</span></p>
+<p>This is a <em>factorisation</em> of the joint distribution.</p>
+</section>
+<section id="independence">
+<h3>Independence<a class="headerlink" href="#independence" title="Link to this heading">#</a></h3>
+<p>If our random variables are all <em>independent</em> of each other (their distributions do not depend on the values of the other variables, then the joint distribution can be written as a product of univariate distributions):</p>
+<p><span class="math notranslate nohighlight">\(P(\mathbf{X}) = \prod_{i=1}^N P(X_i)\)</span></p>
+</section>
+<section id="bayes-rule">
+<h3>Bayes Rule<a class="headerlink" href="#bayes-rule" title="Link to this heading">#</a></h3>
+<p>The definition of condition probability <span class="math notranslate nohighlight">\(P(X_i\vert X_j) = \frac{P(X_i, X_j)}{P(X_j)}\)</span>, combined with the symmetry of the joint distribution <span class="math notranslate nohighlight">\(P(X_i,X_j) = P(X_k,X_i)\)</span> leads directly to Bayes Rule:</p>
+<p><span class="math notranslate nohighlight">\(P(X_i\vert X_j) = \frac{P(X_j\vert X_i)P(X_i)}{P(X_j)}\)</span>.</p>
+</section>
+</section>
+<section id="parametric-explosion">
+<h2>Parametric explosion<a class="headerlink" href="#parametric-explosion" title="Link to this heading">#</a></h2>
+<p>A probabilistic model of tossing a coin requires just one parameters - <span class="math notranslate nohighlight">\(P(H)\)</span>. <span class="math notranslate nohighlight">\(P(T)\)</span> would do just as well because <span class="math notranslate nohighlight">\(P(H)+P(T)=1\)</span>. There are only two outcomes and one of them must happen. If you toss two coins, you will need at most two parameters to describe their joint distribution: <span class="math notranslate nohighlight">\(P(\mathrm{coin1}=\mathrm{heads})\)</span> and <span class="math notranslate nohighlight">\(P(\mathrm{coin2}=\mathrm{heads})\)</span> (if you are tossing the same coin twice these two parameters will be the same.) This is because coin tosses are <strong>independent</strong> events and so the joint distribution can be factorised as</p>
+<div class="math notranslate nohighlight">
+\[
+P(X,Y) = P(X)P(Y)
+\]</div>
+<p>Rolling dice can be treated in the same way, except each die require five parameters to specify its distribution. Even if each die has a different bias, adding another die only adds another five parameters and the number of parameters scales linearly with the number of die.</p>
+<p>If the events are not independent then the problem becomes very much more complex. The number of parameters in the joint distribution of a discrete variable problem is the number of entries in its joint distribution, minus one because the final entry can be derived from the others plus the normalisation constraint. For a problem with <span class="math notranslate nohighlight">\(N\)</span> non-independent random variables, there are therefore up to <span class="math notranslate nohighlight">\(N(N-1)/2 - 1\)</span> parameters in the joint distribution (the joint distribution is symmetric). This is quadratic in the number of variables. The same is true for continuous random variable where the size of the covariance matrix scales similarly. In any case, it is very rare that in practice we will have access to the full joint distribution: what we observe in the world is almost exclusively samples from a range of conditional distributions. If we knew all the conditional distributions then we could use the product rule to construct the joint distribution, but the full set of conditional distributions needed to do this are almost never directly accessible to us.</p>
+<p>In real-world problems, the variables are rarely truly independent. One expects, for example, the financial performance of a retail company to be affected by a whole range of factors, perhaps including:</p>
 <ul class="simple">
-<li><p>You will need to write “helper” functions to construct the goals corresponding to left/next to/right. You may find the <code class="docutils literal notranslate"><span class="pre">zip</span></code> function helpful.</p></li>
-<li><p>You can use the ordering of the solutions to represent the order of the houses.</p></li>
+<li><p>Interest rates - affect how much money people need to pay for their mortgage and so reduces the amount available to spend in shops.</p></li>
+<li><p>Inflation - affects the prices in the shops.</p></li>
+<li><p>Weather - affects the number of shoppers who go to stores.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">zip</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder for code</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+<p>These are clearly not all independent - inflation and interest rates are certainly related to each other (because central banks manipulate interest rates to control inflation), but perhaps weather <em>is</em> independent of the other two factors? And perhaps under some circumstances (for example, online retail), weather does not affect financial performance. This may lead us to suspect that perhaps a partial factorisation of the joint distribution of these variable might be possible - and it often is. The key concept that will enable this is the notion of <em>conditional independence</em>.</p>
 </section>
 </section>
 
@@ -521,7 +491,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./Part1"
+            path: "./Part3"
         },
         predefinedOutput: true
     }
@@ -538,24 +508,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="9.%20Kanren%20Tutorial%20nocode.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Logic Programming in Python</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="11.%20Automating%20Natural%20Deduction.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Automating Natural Deduction</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -572,12 +524,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-royal-flush">A Royal Flush</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#einstein-s-riddle">Einstein’s Riddle</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hints">Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recap-of-definitions-from-probability-theory">Recap of definitions from Probability Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-joint-distribution">The Joint Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginalisation-and-the-sum-rule">Marginalisation and the Sum Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability">Conditional Probability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-product-rule">The Product Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independence">Independence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-rule">Bayes Rule</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-explosion">Parametric explosion</a></li>
 </ul>
   </nav></div>
 
