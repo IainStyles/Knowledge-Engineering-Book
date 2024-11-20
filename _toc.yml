@@ -41,6 +41,11 @@ parts:
       - file: Part2/9. HALD Practical.ipynb
       - file: Part2/9a. Dynamic Graph Creation.ipynb
       - file: Part2/9b. HALD Practical Solution.ipynb
+  - caption: Reasoning under Uncertainty
+    chapters:
+    - file: Part3/0. Reasoning under Uncertainty.md
+      sections:
+      - file: Part3/1. Probabilistic Reasoning.md
 #  - caption: Organising Knowledge with Graphs
 
 #    chapters:
