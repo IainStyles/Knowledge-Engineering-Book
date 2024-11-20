@@ -33,9 +33,9 @@ parts:
       - file: Part2/4. Ontologies.md
       - file: Part2/5. Exercises 10 Creating an Ontology.md
       - file: Part2/6. Creating a Knowledge Graph in OWLReady2 nocode.ipynb
-      - file: Part2/6a. Creating a Knowledge Graph in OWLReady2 nocode.ipynb
+      - file: Part2/6a. Creating a Knowledge Graph in OWLReady2.ipynb
       - file: Part2/7. Exercise 11 Extending a Knowledge Graph.md
-      - file: Part2/7a. Exercise 11 Extending a Knowledge Graph.md      
+      - file: Part2/7a. Exercise 11 Extending a Knowledge Graph Solution.md      
       - file: Part2/8. Exercises 12 Implementing a complete ontology.ipynb
       - file: Part2/8a. Exercises 12 Implementing a complete ontology Solution.ipynb
       - file: Part2/9. HALD Practical.ipynb
