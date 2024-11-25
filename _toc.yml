@@ -49,13 +49,13 @@ parts:
       sections:
       - file: Part3/1. Probabilistic Reasoning.md
       - file: Part3/2. Exercise 13 Probability nocode.ipynb
-      #- file: Part3/2. Exercise 13 Probability.ipynb
+      - file: Part3/2. Exercise 13 Probability.ipynb
       - file: Part3/3. Conditional Independence.md
       - file: Part3/4. Exercises 14 Conditional Independence.md
       - file: Part3/5. Conditional Independence 2 nocode.ipynb
-      #- file: Part3/5. Conditional Independence 2.ipynb
+      - file: Part3/5. Conditional Independence 2.ipynb
       - file: Part3/6. Exercises 15 Conditional Independence 2 nocode.ipynb
-      #- file: Part3/6. Exercises 15 Conditional Independence 2.ipynb
+      - file: Part3/6. Exercises 15 Conditional Independence 2.ipynb
       - file: Part3/7. Bayesian Networks.md
       - file: Part3/8. Exercises 16 Bayesian Networks.md
       - file: Part3/9. Exact Inference in Bayesian Networks nocode.ipynb
