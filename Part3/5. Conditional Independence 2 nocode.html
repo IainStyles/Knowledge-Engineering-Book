@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/5. Conditional Independence 2 nocode';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Exercises 15: Conditional Independence 2" href="6.%20Exercises%2015%20Conditional%20Independence%202%20nocode.html" />
+    <link rel="next" title="Conditional Independence" href="5.%20Conditional%20Independence%202.html" />
     <link rel="prev" title="Exercises 14: Conditional Independence" href="4.%20Exercises%2014%20Conditional%20Independence.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -228,10 +228,13 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0.%20Reasoning%20under%20Uncertainty.html">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="1.%20Probabilistic%20Reasoning.html">Introduction to Probabilistic Reasoning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%2013%20Probability%20nocode.html">Exercises in Basic Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%2013%20Probability.html">Exercise 13: Basic Probability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.%20Conditional%20Independence.html">Conditional Independence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4.%20Exercises%2014%20Conditional%20Independence.html">Exercises 14: Conditional Independence</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Conditional Independence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.%20Conditional%20Independence%202.html">Conditional Independence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="6.%20Exercises%2015%20Conditional%20Independence%202%20nocode.html">Exercises 15: Conditional Independence 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.%20Exercises%2015%20Conditional%20Independence%202.html">Exercises 15: Conditional Independence 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.%20Bayesian%20Networks.html">Bayesian Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="8.%20Exercises%2016%20Bayesian%20Networks.html">Exercise 16: Bayesian Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="9.%20Exact%20Inference%20in%20Bayesian%20Networks%20nocode.html">Exact Inference in Bayesian Networks</a></li>
@@ -528,10 +531,37 @@ P(X) = \begin{pmatrix}0.7 \\ 0.3\end{pmatrix}\quad\mathrm{and}\quad P(Y) = \begi
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
 <p>We can calculate quantities from this by summing over the array in different ways. For example, to calculate the univariate distributions we sum over the other indices:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_G</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(G)=</span><span class="si">{</span><span class="n">P_G</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">P_M</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(M)=</span><span class="si">{</span><span class="n">P_M</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">P_F</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(F)=</span><span class="si">{</span><span class="n">P_F</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">P_P</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(P)=</span><span class="si">{</span><span class="n">P_P</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(G)=[0.6 0.4]
+P(M)=[0.25 0.75]
+P(F)=[0.5 0.5]
+P(P)=[0.475 0.525]
 </pre></div>
 </div>
 </div>
@@ -539,7 +569,55 @@ P(X) = \begin{pmatrix}0.7 \\ 0.3\end{pmatrix}\quad\mathrm{and}\quad P(Y) = \begi
 <p>Let us first explore whether the four variables are independent of each other. To test this, we see if elements of the joint distribution are given by the products of the univariate distributions: <span class="math notranslate nohighlight">\(P(G,M,F,P)=P(G)P(M)P(F),P(P)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple but tedious way</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">P_G</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">P_M</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">P_F</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">P_P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[[0.035625 0.      ]
+   [0.       0.      ]]
+
+  [[0.       0.      ]
+   [0.       0.      ]]]
+
+
+ [[[0.       0.      ]
+   [0.       0.      ]]
+
+  [[0.       0.      ]
+   [0.       0.      ]]]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># More efficient</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="n">iterator</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">iterator</span><span class="p">:</span>
+    <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">i</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="n">P_G</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="n">P_M</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">*</span> <span class="n">P_F</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">*</span> <span class="n">P_P</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[[0.035625 0.039375]
+   [0.035625 0.039375]]
+
+  [[0.106875 0.118125]
+   [0.106875 0.118125]]]
+
+
+ [[[0.02375  0.02625 ]
+   [0.02375  0.02625 ]]
+
+  [[0.07125  0.07875 ]
+   [0.07125  0.07875 ]]]]
 </pre></div>
 </div>
 </div>
@@ -549,7 +627,33 @@ P(X) = \begin{pmatrix}0.7 \\ 0.3\end{pmatrix}\quad\mathrm{and}\quad P(Y) = \begi
 <p>First, let’s compute the distributions of <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(F\)</span>, and <span class="math notranslate nohighlight">\(P\)</span> conditioned on <span class="math notranslate nohighlight">\(G\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_M_notG</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">P_G</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">P_M_G</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">P_G</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(M|~G)) = </span><span class="si">{</span><span class="n">P_M_notG</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(M|G)) = </span><span class="si">{</span><span class="n">P_M_G</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">P_F_notG</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">P_G</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">P_F_G</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">P_G</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(F|~G)) = </span><span class="si">{</span><span class="n">P_F_notG</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(F|G)) = </span><span class="si">{</span><span class="n">P_F_G</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">P_P_notG</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">P_G</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">P_P_G</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">P_G</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(P|~G)) = </span><span class="si">{</span><span class="n">P_P_notG</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(P|G)) = </span><span class="si">{</span><span class="n">P_P_G</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(M|~G)) = [0.25 0.75]
+P(M|G)) = [0.25 0.75]
+P(F|~G)) = [0.5 0.5]
+P(F|G)) = [0.5 0.5]
+P(P|~G)) = [0.475 0.525]
+P(P|G)) = [0.475 0.525]
 </pre></div>
 </div>
 </div>
@@ -557,7 +661,25 @@ P(X) = \begin{pmatrix}0.7 \\ 0.3\end{pmatrix}\quad\mathrm{and}\quad P(Y) = \begi
 <p>Interesting. Each of the other variables are <strong>independent</strong> of <span class="math notranslate nohighlight">\(G\)</span>. Perhaps we might have expected this? Would we expect whether someone has studied Geography or not to influence whether they also studies Maths, or work in finance, or work as a programmer. What about studying Maths? We might expect that this would influence whether someone works as a programmer or in finance?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_F_notM</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">P_M</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">P_F_M</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">P_M</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(F|~M)) = </span><span class="si">{</span><span class="n">P_F_notM</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(F|M)) = </span><span class="si">{</span><span class="n">P_F_M</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">P_P_notM</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">P_M</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">P_P_M</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">P_M</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(P|~M)) = </span><span class="si">{</span><span class="n">P_P_notM</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(P|M)) = </span><span class="si">{</span><span class="n">P_P_M</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(F|~M)) = [0.8 0.2]
+P(F|M)) = [0.4 0.6]
+P(P|~M)) = [0.55 0.45]
+P(P|M)) = [0.45 0.55]
 </pre></div>
 </div>
 </div>
@@ -566,7 +688,21 @@ P(X) = \begin{pmatrix}0.7 \\ 0.3\end{pmatrix}\quad\mathrm{and}\quad P(Y) = \begi
 <p>We might also look at their joint distribution:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P_FP_notM</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">P_M</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">P_FP_M</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">P_M</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(F,P|~M)) =</span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">P_FP_notM</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(F,P|M)) =</span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">P_FP_M</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(F,P|~M)) =
+ [[0.44 0.36]
+ [0.11 0.09]]
+P(F,P|M)) =
+ [[0.18 0.22]
+ [0.27 0.33]]
 </pre></div>
 </div>
 </div>
@@ -640,11 +776,11 @@ P(X) = \begin{pmatrix}0.7 \\ 0.3\end{pmatrix}\quad\mathrm{and}\quad P(Y) = \begi
       </div>
     </a>
     <a class="right-next"
-       href="6.%20Exercises%2015%20Conditional%20Independence%202%20nocode.html"
+       href="5.%20Conditional%20Independence%202.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercises 15: Conditional Independence 2</p>
+        <p class="prev-next-title">Conditional Independence</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
