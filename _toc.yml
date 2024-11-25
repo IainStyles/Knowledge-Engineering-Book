@@ -16,7 +16,9 @@ parts:
       - file: Part1/7. Proving Arguments.md
       - file: Part1/8. Exercise 4 Natural Deduction.md
       - file: Part1/9. Kanren Tutorial nocode.ipynb
+      - file: Part1/9. Kanren Tutorial.ipynb
       - file: Part1/10. Exercises 5 Kanren nocode.ipynb
+      - file: Part1/10. Exercises 5 Kanren.ipynb
       - file: Part1/11. Automating Natural Deduction.md
       - file: Part1/12. Exercise 6 Automating Natural Deduction.md
       - file: Part1/13. Proof and Search.md
@@ -46,7 +48,35 @@ parts:
     - file: Part3/0. Reasoning under Uncertainty.md
       sections:
       - file: Part3/1. Probabilistic Reasoning.md
-#  - caption: Organising Knowledge with Graphs
+      - file: Part3/2. Exercise 13 Probability nocode.ipynb
+      #- file: Part3/2. Exercise 13 Probability.ipynb
+      - file: Part3/3. Conditional Independence.md
+      - file: Part3/4. Exercises 14 Conditional Independence.md
+      - file: Part3/5. Conditional Independence 2 nocode.ipynb
+      #- file: Part3/5. Conditional Independence 2.ipynb
+      - file: Part3/6. Exercises 15 Conditional Independence 2 nocode.ipynb
+      #- file: Part3/6. Exercises 15 Conditional Independence 2.ipynb
+      - file: Part3/7. Bayesian Networks.md
+      - file: Part3/8. Exercises 16 Bayesian Networks.md
+      - file: Part3/9. Exact Inference in Bayesian Networks nocode.ipynb
+      #- file: Part3/9. Exact Inference in Bayesian Networks.ipynb
+      - file: Part3/10. Exercises 17 Exact Inference nocode.ipynb
+      #- file: Part3/10. Exercises 17 Exact Inference.ipynb
+      - file: Part3/11. Approxiate Inference nocode.ipynb
+      #- file: Part3/11. Approximate Inference.ipynb
+      - file: Part3/12. Exercise 18 Approximate Inference.ipynb
+      #- file: Part3/12. Exercise 18 Approximate Inference nocode.ipynb 
+      - file: Part3/13. More Approximate Inference nocode.ipynb
+      #- file: Part3/13. More Approximate Inference.ipynb
+      - file: Part3/14. Exercises 19 Approximate Inference with PyMC nocode.ipynb
+      #- file: Part3/14. Exercises 19 Approximate Inference with PyMC.ipynb
+      - file: Part3/15. Bayesian Networks with Continuous Variables.ipynb
+      #- file: Part3/16. Exercise 20 Bayesian Networks with Continuous Variable nocode.ipynb
+      - file: Part3/16. Exercise 20 Bayesian Networks with Continuous Variable.ipynb
+      #- file: Part3/17. Introduction to Causal Inference nocode.ipynb
+      - file: Part3/17. Introduction to Causal Inference.ipynb
+      #- file: Part3/18. Exercises 21 Causal Inference nocode.ipynb
+      - file: Part3/18. Exercises 21 Causal Inference.ipynb
 
 #    chapters:
 #    - file: 2. Knowledge Graphs and Ontologies
