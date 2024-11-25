@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reasoning under Uncertainty &#8212; ECS8052 Knowledge Engineering</title>
+    <title>Exercise 13: Basic Probability &#8212; ECS8052 Knowledge Engineering</title>
   
   
   
@@ -59,11 +59,9 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/0. Reasoning under Uncertainty';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/2. Exercise 13 Probability';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction to Probabilistic Reasoning" href="1.%20Probabilistic%20Reasoning.html" />
-    <link rel="prev" title="Practical: Solution to The HALD Knowledge Graph" href="../Part2/9b.%20HALD%20Practical%20Solution.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,6 +123,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -224,8 +224,8 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reasoning under Uncertainty</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="0.%20Reasoning%20under%20Uncertainty.html">Reasoning under Uncertainty</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="1.%20Probabilistic%20Reasoning.html">Introduction to Probabilistic Reasoning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%2013%20Probability%20nocode.html">Exercises in Basic Probability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.%20Conditional%20Independence.html">Conditional Independence</a></li>
@@ -316,7 +316,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/0. Reasoning under Uncertainty.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/2. Exercise 13 Probability.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -346,7 +346,7 @@
       
       
       
-      <li><a href="../_sources/Part3/0. Reasoning under Uncertainty.md" target="_blank"
+      <li><a href="../_sources/Part3/2. Exercise 13 Probability.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +356,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -428,7 +428,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Reasoning under Uncertainty</h1>
+    <h1>Exercise 13: Basic Probability</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,10 +442,118 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="reasoning-under-uncertainty">
-<h1>Reasoning under Uncertainty<a class="headerlink" href="#reasoning-under-uncertainty" title="Link to this heading">#</a></h1>
-<p>Logic and Knowledge Graphs enable us to represent statements of fact, but we do not always have complete knowledge of the world and our knowledge is often uncertain. In this sectin we will develop techniques for represnting and reasoning over knowledge that is subject to uncertainty, developing a class of probabilistic models known as Bayesian Networks that will allow us to efficiently make inferences over uncertain knowledge.</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-13-basic-probability">
+<h1>Exercise 13: Basic Probability<a class="headerlink" href="#exercise-13-basic-probability" title="Link to this heading">#</a></h1>
+<p>Given the joint probability distribution <code class="docutils literal notranslate"><span class="pre">JointPDF[x][y][z]</span></code> of a binary variable <span class="math notranslate nohighlight">\(X\)</span>,  a three-valued variable <span class="math notranslate nohighlight">\(Y\)</span>, and a binary variable <span class="math notranslate nohighlight">\(Z\)</span> perform the following computations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">JointPDF</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.11</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.07</span><span class="p">,</span><span class="mf">0.03</span><span class="p">]</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.16</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.19</span><span class="p">,</span><span class="mf">0.02</span><span class="p">]</span>
+        <span class="p">]</span>
+     <span class="p">]</span>
+     <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple">
+<li><p>Verify that <code class="docutils literal notranslate"><span class="pre">JointPDF</span></code> is normalised.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Compute <span class="math notranslate nohighlight">\(P(X)\)</span>, <span class="math notranslate nohighlight">\(P(Y)\)</span> and <span class="math notranslate nohighlight">\(P(Z)\)</span></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sum over the other axes</span>
+<span class="n">PX</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">PY</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">PZ</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">PX</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">PY</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">PZ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.48 0.52]
+[0.37 0.32 0.31]
+[0.54 0.46]
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Compute <span class="math notranslate nohighlight">\(P(X,Y)\)</span>, <span class="math notranslate nohighlight">\(P(Y,Z)\)</span>, <span class="math notranslate nohighlight">\(P(X,Z)\)</span></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PXY</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">PXZ</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">PYZ</span> <span class="o">=</span> <span class="n">JointPDF</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">PXY</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">PXZ</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">PYZ</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.15 0.23 0.1 ]
+ [0.22 0.09 0.21]]
+[[0.28 0.2 ]
+ [0.26 0.26]]
+[[0.16 0.21]
+ [0.12 0.2 ]
+ [0.26 0.05]]
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Compute $P(X\vert Y)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PX_y0</span> <span class="o">=</span> <span class="n">PXY</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">PXY</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">PX_y1</span> <span class="o">=</span> <span class="n">PXY</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">PXY</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">PX_y2</span> <span class="o">=</span> <span class="n">PXY</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">PXY</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">PX_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">PX_y1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">PX_y2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.40540541 0.59459459]
+[0.71875 0.28125]
+[0.32258065 0.67741935]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 
@@ -479,24 +587,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../Part2/9b.%20HALD%20Practical%20Solution.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Practical: Solution to The HALD Knowledge Graph</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="1.%20Probabilistic%20Reasoning.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Probabilistic Reasoning</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               

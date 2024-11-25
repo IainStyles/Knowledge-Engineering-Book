@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reasoning under Uncertainty &#8212; ECS8052 Knowledge Engineering</title>
+    <title>Bayesian Networks &#8212; ECS8052 Knowledge Engineering</title>
   
   
   
@@ -59,11 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/0. Reasoning under Uncertainty';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/7. Bayesian Networks';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction to Probabilistic Reasoning" href="1.%20Probabilistic%20Reasoning.html" />
-    <link rel="prev" title="Practical: Solution to The HALD Knowledge Graph" href="../Part2/9b.%20HALD%20Practical%20Solution.html" />
+    <link rel="next" title="Exercise 16: Bayesian Networks" href="8.%20Exercises%2016%20Bayesian%20Networks.html" />
+    <link rel="prev" title="Exercises 15: Conditional Independence 2" href="6.%20Exercises%2015%20Conditional%20Independence%202%20nocode.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -225,14 +225,14 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reasoning under Uncertainty</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.%20Reasoning%20under%20Uncertainty.html">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="1.%20Probabilistic%20Reasoning.html">Introduction to Probabilistic Reasoning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%2013%20Probability%20nocode.html">Exercises in Basic Probability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.%20Conditional%20Independence.html">Conditional Independence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4.%20Exercises%2014%20Conditional%20Independence.html">Exercises 14: Conditional Independence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.%20Conditional%20Independence%202%20nocode.html">Conditional Independence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="6.%20Exercises%2015%20Conditional%20Independence%202%20nocode.html">Exercises 15: Conditional Independence 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.%20Bayesian%20Networks.html">Bayesian Networks</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Bayesian Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="8.%20Exercises%2016%20Bayesian%20Networks.html">Exercise 16: Bayesian Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="9.%20Exact%20Inference%20in%20Bayesian%20Networks%20nocode.html">Exact Inference in Bayesian Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="10.%20Exercises%2017%20Exact%20Inference%20nocode.html">Exercise 17 - Exact Inference</a></li>
@@ -316,7 +316,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/0. Reasoning under Uncertainty.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/7. Bayesian Networks.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -346,7 +346,7 @@
       
       
       
-      <li><a href="../_sources/Part3/0. Reasoning under Uncertainty.md" target="_blank"
+      <li><a href="../_sources/Part3/7. Bayesian Networks.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -417,7 +417,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -428,11 +430,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Reasoning under Uncertainty</h1>
+    <h1>Bayesian Networks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-definition-of-a-bayesian-network">Formal definition of a Bayesian Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-method-for-constructing-bayesian-networks">A method for constructing Bayesian Networks</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -442,11 +453,152 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="reasoning-under-uncertainty">
-<h1>Reasoning under Uncertainty<a class="headerlink" href="#reasoning-under-uncertainty" title="Link to this heading">#</a></h1>
-<p>Logic and Knowledge Graphs enable us to represent statements of fact, but we do not always have complete knowledge of the world and our knowledge is often uncertain. In this sectin we will develop techniques for represnting and reasoning over knowledge that is subject to uncertainty, developing a class of probabilistic models known as Bayesian Networks that will allow us to efficiently make inferences over uncertain knowledge.</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="bayesian-networks">
+<h1>Bayesian Networks<a class="headerlink" href="#bayesian-networks" title="Link to this heading">#</a></h1>
+<p>We have previously established that we can write a joint distribution as a product of conditional probabilities. In our specific example, which we will continue in this section, we showed that we could write</p>
+<p><span class="math notranslate nohighlight">\(P(G,M,F,P) = P(P\vert M)P(F\vert M)P(M)P(G)\)</span></p>
+<p>Why is this useful and desirable? There are three substantive reasons.</p>
+<ol class="arabic simple">
+<li><p>The number of parameters needed to characterise the distribution is much reduced. The full joint distribution requires, in this case, fifteen independent parameters (with the sixteenth being set by the normalisation constraint). Our factorised distribution can be characterised by just six parameters: <span class="math notranslate nohighlight">\(P(M)\)</span> and <span class="math notranslate nohighlight">\(P(G)\)</span> require one parameter each (with the second following for normalisation); <span class="math notranslate nohighlight">\(P(P\vert M)\)</span> and <span class="math notranslate nohighlight">\(P(F\vert M)\)</span> require two parameters each, with the others following from normalisation. This makes little difference here, but for problems involving many more variables, or where the variables have many more possible values then this can be a major issue, particularly when performing inference because of the challenges of sampling from these distributions.</p></li>
+<li><p>It is rarely possible, in real problems, to measure the joint distribution directly. In most practical situations we may observe a small number of variables whilst controlling the others. Factorisation of the joint distribution in terms of things that we can observe may, some circumstance be important if not necessarily optimal.</p></li>
+<li><p>Because the factorisation reflects the structure of the <strong>causal relationships</strong> in the problem. In our example, the factorisation reflects that studying Geography does not influence either study of Mathematics, or careers in finance or programming; it reflects that those careers <em>do</em> depend on having studies Mathematics; and it reflects that careers in programming and finance are conditionally independent of each other.</p></li>
+</ol>
+<p>The first two reasons are practical, pragmatic reasons why this factorisation is useful. The third, however, is much more powerful because it allows us to capture and model probabilistic problems in a very natural and interpretable way. Factorisations of this type that leverage the independence and conditional independence relationships to represent a world probabilistically are called <strong>Bayesian networks</strong>.</p>
+<section id="formal-definition-of-a-bayesian-network">
+<h2>Formal definition of a Bayesian Network<a class="headerlink" href="#formal-definition-of-a-bayesian-network" title="Link to this heading">#</a></h2>
+<p>So what is a Bayesian network, technically? It is a representation of a suitably factorised probability distribution as a <em>directed graph</em> in which</p>
+<ol class="arabic simple">
+<li><p>Each node represents a single random variable (discrete or continuous)</p></li>
+<li><p>Edges between node represent conditional relationships and are directed from the “conditioner” (or <em>parent</em>) node to the “conditioned” node</p></li>
+<li><p>Each node has an associated conditional probability distribution with the variable associated with the node conditioned on it “parents”/</p></li>
+<li><p>“Orphan” nodes with no parents represent variables that are unconditionally independent.</p></li>
+<li><p>The graph must be strictly acyclic: it is a <strong>directed acyclic graph</strong> (DAG).</p></li>
+</ol>
+<p>What does such a graph look like? For our current example,</p>
+<ul class="simple">
+<li><p>There are four nodes corresponding to random variables <span class="math notranslate nohighlight">\(G\)</span>, <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(F\)</span>, and <span class="math notranslate nohighlight">\(P\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(M\)</span> and unconditionally independent and are this “orphan” nodes.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(F\)</span> are conditioned on <span class="math notranslate nohighlight">\(M\)</span> only.</p></li>
+</ul>
+<p>We therefore draw the following DAG:</p>
+<p><img alt="Example of a DAG" src="../_images/dag.png" /></p>
+<p>The DAG naturally and visually conveys the structure and relationships within the factorised joint distribution. The isolation of <span class="math notranslate nohighlight">\(G\)</span> reflects its statistical independence and lack of influence on any other variables, while <span class="math notranslate nohighlight">\(M\)</span>’s lack of parents indicates that it is unconditionally independent but the outgoing arrows reflect its influence on other variables: <span class="math notranslate nohighlight">\(M\)</span> has a <em>causative</em> influence on <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(F\)</span>.</p>
+<p>Each node of this graph has associated with it a probability distribution as shown in the figure below.</p>
+<p><img alt="Example of a DAG" src="../_images/dag_pdf.png" /></p>
+<p>This graph was, in a sense, known to us and was derived from the joint probability distribution. This was not by chance - in fact the joint probability was generated from the conditionally factorised form. In general we will not of course know the joint distribution, and in any case it would be very hard to uncover the various dependencies/independencies if we did not know what we were looking for. Most commonly, we will be posed with a problem and we will be looking to construct a Bayesian network such that the resulting joint distribution represented the given problem domain well and efficiently. Let us now set out a procedure for doing just that.</p>
+</section>
+<section id="a-method-for-constructing-bayesian-networks">
+<h2>A method for constructing Bayesian Networks<a class="headerlink" href="#a-method-for-constructing-bayesian-networks" title="Link to this heading">#</a></h2>
+<p>Let us being by reminding ourselve of our conditional factorisation of the joint distribution.</p>
+<p><span class="math notranslate nohighlight">\( P(x_1,\dots,x_N) = \prod_{i=1}^N P(x_i\vert x_{i-1},\dots,x_1)\)</span>.</p>
+<p>(notice the notation - this refers to specific values of the random variables)</p>
+<p>This is called the <strong>chain rule</strong>. It requires an ordering to be imposed on the random variables and we will suggestively write as a shorthand that</p>
+<p><span class="math notranslate nohighlight">\(P(X_i\vert X_{i-1},\dots,X_1) = P(X_i\vert\mathrm{parents}(X_i)\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\mathrm{parents}(X_i)\)</span> are a subset of <span class="math notranslate nohighlight">\({X_{i-1},\dots,X_1}\)</span>. We can do this very simply in the graph by making sure that the nodes are appropriate ordered such that those nodes that are closer to the start of the DAG and have no incoming edges are lower in number that those with incoming edges. The question is, how to acheive this?</p>
+<p>The Chain rule implies that a Bayesian network properly represents its domain if each node is conditionally independent of its predecessors in the ordering, given its parents. Here is a procedure for acheiving this:</p>
+<ol class="arabic simple">
+<li><p>Choose the variables needed to model the domain and order them. A good order has causes preceding effects and this will lead for a more compact representation.</p></li>
+<li><p>For each node, choose a set of parents such that the chain rule is satisfied and that the parents can plausibly represent causes of the node’s effect.</p></li>
+<li><p>Add edges directed from parents to the node.</p></li>
+<li><p>Write down a conditional probability table for the node.</p></li>
+</ol>
+<p>Let’s work through a simple example. Consider a situation in which</p>
+<ul class="simple">
+<li><p>Fire brigade called</p></li>
+<li><p>Cat stuck in tree</p></li>
+<li><p>House on fire</p></li>
+<li><p>Explosion in kitchen</p></li>
+</ul>
+<p>How would you order this? Well, let’s think about what the causative chain of events might be.</p>
+<ul class="simple">
+<li><p>We may call the fire brigade because of a fire, or because of a stuck cat.</p></li>
+<li><p>The explosion in the kitchen could cause the fire, and might also have scared the cat.</p></li>
+</ul>
+<p>We would therefore place the explosion first, followed by the cat and the fire in either order with the explosion as it’s parent, and then the fire brigade as the final node.</p>
+<p><img alt="DAG for calling the Fire Brigade" src="../_images/fire_dag.png" /></p>
+<p>Can we ascribe some rough probabilities to these events? Let’s say there is a 5% chance of a kitchen explosion <span class="math notranslate nohighlight">\(X\)</span>,</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(P(X)\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(\lnot X)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>0.05</p></td>
+<td class="text-center"><p>0.95</p></td>
+</tr>
+</tbody>
+</table>
 </div>
+<p>If there was a kitchen explosion, there is a high chance the cat might climb a tree (<span class="math notranslate nohighlight">\(C\)</span>). There is a reduced (but non-zero) probability that they might climb a tree anyway…</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(C)\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(\lnot C)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(X\)</span></p></td>
+<td class="text-center"><p>0.85</p></td>
+<td class="text-center"><p>0.15</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(\lnot X\)</span></p></td>
+<td class="text-center"><p>0.40</p></td>
+<td class="text-center"><p>0.60</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If there was an explosion, the chances of a fire <span class="math notranslate nohighlight">\(F\)</span> are higher than if there weren’t a fire.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(F)\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(\lnot F)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(X\)</span></p></td>
+<td class="text-center"><p>0.65</p></td>
+<td class="text-center"><p>0.35</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(\lnot X\)</span></p></td>
+<td class="text-center"><p>0.10</p></td>
+<td class="text-center"><p>0.90</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>And finally we need the probabilities of the fire brigade (<span class="math notranslate nohighlight">\(B\)</span>) being called for each combination of cat/fire.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(B)\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(\lnot B)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(C,F\)</span></p></td>
+<td class="text-center"><p>0.99</p></td>
+<td class="text-center"><p>0.01</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(C,\lnot F\)</span></p></td>
+<td class="text-center"><p>0.6</p></td>
+<td class="text-center"><p>0.40</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(\lnot C,F\)</span></p></td>
+<td class="text-center"><p>0.85</p></td>
+<td class="text-center"><p>0.15</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(\lnot C,\lnot F\)</span></p></td>
+<td class="text-center"><p>0.01</p></td>
+<td class="text-center"><p>0.99</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -480,20 +632,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Part2/9b.%20HALD%20Practical%20Solution.html"
+       href="6.%20Exercises%2015%20Conditional%20Independence%202%20nocode.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Practical: Solution to The HALD Knowledge Graph</p>
+        <p class="prev-next-title">Exercises 15: Conditional Independence 2</p>
       </div>
     </a>
     <a class="right-next"
-       href="1.%20Probabilistic%20Reasoning.html"
+       href="8.%20Exercises%2016%20Bayesian%20Networks.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Probabilistic Reasoning</p>
+        <p class="prev-next-title">Exercise 16: Bayesian Networks</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -503,6 +655,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-definition-of-a-bayesian-network">Formal definition of a Bayesian Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-method-for-constructing-bayesian-networks">A method for constructing Bayesian Networks</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

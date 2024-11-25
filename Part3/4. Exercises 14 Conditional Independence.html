@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reasoning under Uncertainty &#8212; ECS8052 Knowledge Engineering</title>
+    <title>Exercises 14: Conditional Independence &#8212; ECS8052 Knowledge Engineering</title>
   
   
   
@@ -57,13 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/0. Reasoning under Uncertainty';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/4. Exercises 14 Conditional Independence';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction to Probabilistic Reasoning" href="1.%20Probabilistic%20Reasoning.html" />
-    <link rel="prev" title="Practical: Solution to The HALD Knowledge Graph" href="../Part2/9b.%20HALD%20Practical%20Solution.html" />
+    <link rel="next" title="Conditional Independence" href="5.%20Conditional%20Independence%202%20nocode.html" />
+    <link rel="prev" title="Conditional Independence" href="3.%20Conditional%20Independence.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -225,11 +223,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reasoning under Uncertainty</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.%20Reasoning%20under%20Uncertainty.html">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="1.%20Probabilistic%20Reasoning.html">Introduction to Probabilistic Reasoning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%2013%20Probability%20nocode.html">Exercises in Basic Probability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.%20Conditional%20Independence.html">Conditional Independence</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.%20Exercises%2014%20Conditional%20Independence.html">Exercises 14: Conditional Independence</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercises 14: Conditional Independence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.%20Conditional%20Independence%202%20nocode.html">Conditional Independence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="6.%20Exercises%2015%20Conditional%20Independence%202%20nocode.html">Exercises 15: Conditional Independence 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.%20Bayesian%20Networks.html">Bayesian Networks</a></li>
@@ -316,7 +314,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/0. Reasoning under Uncertainty.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/4. Exercises 14 Conditional Independence.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -346,7 +344,7 @@
       
       
       
-      <li><a href="../_sources/Part3/0. Reasoning under Uncertainty.md" target="_blank"
+      <li><a href="../_sources/Part3/4. Exercises 14 Conditional Independence.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -428,7 +426,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Reasoning under Uncertainty</h1>
+    <h1>Exercises 14: Conditional Independence</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,12 +440,32 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="reasoning-under-uncertainty">
-<h1>Reasoning under Uncertainty<a class="headerlink" href="#reasoning-under-uncertainty" title="Link to this heading">#</a></h1>
-<p>Logic and Knowledge Graphs enable us to represent statements of fact, but we do not always have complete knowledge of the world and our knowledge is often uncertain. In this sectin we will develop techniques for represnting and reasoning over knowledge that is subject to uncertainty, developing a class of probabilistic models known as Bayesian Networks that will allow us to efficiently make inferences over uncertain knowledge.</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-14-conditional-independence">
+<h1>Exercises 14: Conditional Independence<a class="headerlink" href="#exercises-14-conditional-independence" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>Consider the following situations. Are the two quantities dependent, independent, or independent when conditioned on a third quantity?</p></li>
+</ol>
+<p>a) Height and Shoe Size.<br />
+b) Reading Ability and Eye Colour.<br />
+c) Journey times in Belfast and weather conditions.
+d) Centimetres of rainfall and hours of darkness.<br />
+e) Student grades and Annual rainfall.<br />
+f) Crop Yield and Sales of Sunblock.<br />
+g) Studying Mathematics and careers in finance.<br />
+h) Studying Geography and careers in finance.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text"><strong>Solution</strong></span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">a) These are dependent, as both have a common cause (overall body size).
+b) Independent. We would not expect any connection between these things.
+c) Dependent. Journeys take longer in bad weather.
+d) Conditionally dependent when conditioned on the time of year: it is darker and rains more in winter.
+e) Independent. We would not expect any connection between these things.
+f) Conditionally independent when conditioned on the weather. Both increase with hours of sunlight.
+g) Dependent. We would expect in finance to have studied mathematics more often than the general population.
+h) Independent. We would not expect any connection between these things.</p>
 </div>
-</section>
+</details></section>
 
     <script type="text/x-thebe-config">
     {
@@ -480,20 +498,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Part2/9b.%20HALD%20Practical%20Solution.html"
+       href="3.%20Conditional%20Independence.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Practical: Solution to The HALD Knowledge Graph</p>
+        <p class="prev-next-title">Conditional Independence</p>
       </div>
     </a>
     <a class="right-next"
-       href="1.%20Probabilistic%20Reasoning.html"
+       href="5.%20Conditional%20Independence%202%20nocode.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Probabilistic Reasoning</p>
+        <p class="prev-next-title">Conditional Independence</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

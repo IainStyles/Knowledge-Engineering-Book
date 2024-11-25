@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reasoning under Uncertainty &#8212; ECS8052 Knowledge Engineering</title>
+    <title>Exact Inference in Bayesian Networks &#8212; ECS8052 Knowledge Engineering</title>
   
   
   
@@ -59,11 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/0. Reasoning under Uncertainty';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/9. Exact Inference in Bayesian Networks nocode';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction to Probabilistic Reasoning" href="1.%20Probabilistic%20Reasoning.html" />
-    <link rel="prev" title="Practical: Solution to The HALD Knowledge Graph" href="../Part2/9b.%20HALD%20Practical%20Solution.html" />
+    <link rel="next" title="Exercise 17 - Exact Inference" href="10.%20Exercises%2017%20Exact%20Inference%20nocode.html" />
+    <link rel="prev" title="Exercise 16: Bayesian Networks" href="8.%20Exercises%2016%20Bayesian%20Networks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -225,7 +225,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reasoning under Uncertainty</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.%20Reasoning%20under%20Uncertainty.html">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="1.%20Probabilistic%20Reasoning.html">Introduction to Probabilistic Reasoning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%2013%20Probability%20nocode.html">Exercises in Basic Probability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.%20Conditional%20Independence.html">Conditional Independence</a></li>
@@ -234,7 +234,7 @@
 <li class="toctree-l2"><a class="reference internal" href="6.%20Exercises%2015%20Conditional%20Independence%202%20nocode.html">Exercises 15: Conditional Independence 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.%20Bayesian%20Networks.html">Bayesian Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="8.%20Exercises%2016%20Bayesian%20Networks.html">Exercise 16: Bayesian Networks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="9.%20Exact%20Inference%20in%20Bayesian%20Networks%20nocode.html">Exact Inference in Bayesian Networks</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exact Inference in Bayesian Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="10.%20Exercises%2017%20Exact%20Inference%20nocode.html">Exercise 17 - Exact Inference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="12.%20Exercise%2018%20Approximate%20Inference.html">Exercise 22 - Approximate Inference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="13.%20More%20Approximate%20Inference%20nocode.html">More Approximate Inference</a></li>
@@ -316,7 +316,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/0. Reasoning under Uncertainty.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/9. Exact Inference in Bayesian Networks nocode.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -346,7 +346,7 @@
       
       
       
-      <li><a href="../_sources/Part3/0. Reasoning under Uncertainty.md" target="_blank"
+      <li><a href="../_sources/Part3/9. Exact Inference in Bayesian Networks nocode.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +356,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -428,7 +428,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Reasoning under Uncertainty</h1>
+    <h1>Exact Inference in Bayesian Networks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,11 +442,55 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="reasoning-under-uncertainty">
-<h1>Reasoning under Uncertainty<a class="headerlink" href="#reasoning-under-uncertainty" title="Link to this heading">#</a></h1>
-<p>Logic and Knowledge Graphs enable us to represent statements of fact, but we do not always have complete knowledge of the world and our knowledge is often uncertain. In this sectin we will develop techniques for represnting and reasoning over knowledge that is subject to uncertainty, developing a class of probabilistic models known as Bayesian Networks that will allow us to efficiently make inferences over uncertain knowledge.</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="exact-inference-in-bayesian-networks">
+<h1>Exact Inference in Bayesian Networks<a class="headerlink" href="#exact-inference-in-bayesian-networks" title="Link to this heading">#</a></h1>
+<p>Now that we have a Bayesian network, what can we do with it? Well, since the Bayesian network is simply a representation of the full joint probability distribution we can do anything we would have done with the joint distribution. Any quantity that could be calculated from the joint distribution can be computed from the Bayesian network.</p>
+<p>The straightforward way to do this would simply be to construct the full joint distribution directly, but that would be to miss the point. One of the reasons we use Bayesian networks is to reduce the number of parameters needed to represent the joint distribution and so to construct the full joint distribution from the network would be both wasteful and would also render the efficient and meaning representation provided by the network redundant.</p>
+<p>However, we don’t need to do that, because we can compute anything we can compute from the joint distribution directly from the Bayesian network factorisation. Let’s consider again the employment prospects of our school-leavers for which we had that the joint distribution is <span class="math notranslate nohighlight">\(P(G,M,F,P)\)</span> which we write as <code class="docutils literal notranslate"><span class="pre">JointPDF</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder</span>
+</pre></div>
 </div>
+</div>
+</div>
+<p>We now know that this can be factorised as <span class="math notranslate nohighlight">\(P(G,M,F,P) = P(P\vert M)P(F\vert M)P(M)P(G)\)</span>. We’ll compute the four terms directly from the <code class="docutils literal notranslate"><span class="pre">JointPDF</span></code> although in practice one would know these independently.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note the compactness of this representation: There are just six independent numbers here.</p>
+<p>So how do we now derive other quantities from this? We sum up various terms just as we would with the joint distribution. Let consider an example. How would we calculate the distribution <span class="math notranslate nohighlight">\(P(F,P)\)</span> from this. From the joint distribution this would be easy, we would do</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is somewhat more complex to do this from the factorised distribution, but only in practical terms; conceptually it is identical:</p>
+<p><span class="math notranslate nohighlight">\(P(F,P) = \sum_{M,G}P(G,M,F,P) = \sum_{M,G}P(P\vert M)P(F\vert M)P(M)P(G)\)</span></p>
+<p>We can simplify this calculation a bit by noting that <span class="math notranslate nohighlight">\(G\)</span> is only in one term in the summand and so we can write</p>
+<p><span class="math notranslate nohighlight">\(P(F,P) = \sum_{M}P(P\vert M)P(F\vert M)P(M)\cdot\sum_G P(G)\)</span></p>
+<p>Noting further that <span class="math notranslate nohighlight">\(\sum_G P(G) = 1\)</span> we have</p>
+<p><span class="math notranslate nohighlight">\(P(F,P) = \sum_{M}P(P\vert M)P(F\vert M)P(M)\)</span>.</p>
+<p>Taking one term <span class="math notranslate nohighlight">\(P_(F=\mathrm{True},P=\mathrm{True}) = P(f,p)\)</span> from the joint distribution as an example, we evaluate this as:
+<span class="math notranslate nohighlight">\(P(f,p) = \sum_M P(p\vert M)P(f\vert M)P(M) = P(p\vert m)P(f\vert m)P(m) + P(p\vert \lnot m)P(f\vert \lnot m)P(\lnot m)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Placeholder</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that this does indeed correspond to the same quantity calculated directly from the joint distribution. Let’s do another example. Can we calculate <span class="math notranslate nohighlight">\(P(M\vert P)\)</span>? Yes, sure.</p>
+<p><span class="math notranslate nohighlight">\(P(M\vert P) = \frac{P(M,P)}{P(P)} = \frac{\sum_{F,G}P(P\vert M)P(F\vert M)P(M)P(G)}{\sum_{F,M,G}P(P\vert M)P(F\vert M)P(M)P(G)}\)</span>.
+We do not need to take this any further to realise that this will take an awful lot of work to get a result. Even the simple joint distribution we computed earlier was hard going: some algebra, plus four multiplications and an addition for one term of the joint distribution. We note that calculating directly from the joint distribution itself requires only a few addition although we would, of course first have to form the joint distribution from the factors which will require a significant number of multiplications. It is possible to generalise the algebraic aspects of this but the arithmetic itself remains.</p>
+<p>For large problems with many variables this approach is unlikely to be tractable. It can be shown to scale as <span class="math notranslate nohighlight">\(O(N2^N)\)</span> which is about as bad as it gets. There are approaches that can accelerate this by removing duplicate calculation but that will only get us to <span class="math notranslate nohighlight">\(O(2^N)\)</span> which is still pretty bad. This is not approach we will use in practice for any but the simplest problems.</p>
+<p>What is the alternative? It is to solve inference problems by <em>approximate sampling</em>. This will be our next topic.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -480,20 +524,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Part2/9b.%20HALD%20Practical%20Solution.html"
+       href="8.%20Exercises%2016%20Bayesian%20Networks.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Practical: Solution to The HALD Knowledge Graph</p>
+        <p class="prev-next-title">Exercise 16: Bayesian Networks</p>
       </div>
     </a>
     <a class="right-next"
-       href="1.%20Probabilistic%20Reasoning.html"
+       href="10.%20Exercises%2017%20Exact%20Inference%20nocode.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Probabilistic Reasoning</p>
+        <p class="prev-next-title">Exercise 17 - Exact Inference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

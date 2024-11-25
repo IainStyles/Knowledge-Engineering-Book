@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reasoning under Uncertainty &#8212; ECS8052 Knowledge Engineering</title>
+    <title>Exercises 15: Conditional Independence 2 &#8212; ECS8052 Knowledge Engineering</title>
   
   
   
@@ -59,11 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/0. Reasoning under Uncertainty';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/6. Exercises 15 Conditional Independence 2 nocode';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction to Probabilistic Reasoning" href="1.%20Probabilistic%20Reasoning.html" />
-    <link rel="prev" title="Practical: Solution to The HALD Knowledge Graph" href="../Part2/9b.%20HALD%20Practical%20Solution.html" />
+    <link rel="next" title="Bayesian Networks" href="7.%20Bayesian%20Networks.html" />
+    <link rel="prev" title="Conditional Independence" href="5.%20Conditional%20Independence%202%20nocode.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -225,13 +225,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reasoning under Uncertainty</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.%20Reasoning%20under%20Uncertainty.html">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="1.%20Probabilistic%20Reasoning.html">Introduction to Probabilistic Reasoning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%2013%20Probability%20nocode.html">Exercises in Basic Probability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.%20Conditional%20Independence.html">Conditional Independence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4.%20Exercises%2014%20Conditional%20Independence.html">Exercises 14: Conditional Independence</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5.%20Conditional%20Independence%202%20nocode.html">Conditional Independence</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.%20Exercises%2015%20Conditional%20Independence%202%20nocode.html">Exercises 15: Conditional Independence 2</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercises 15: Conditional Independence 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="7.%20Bayesian%20Networks.html">Bayesian Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="8.%20Exercises%2016%20Bayesian%20Networks.html">Exercise 16: Bayesian Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="9.%20Exact%20Inference%20in%20Bayesian%20Networks%20nocode.html">Exact Inference in Bayesian Networks</a></li>
@@ -316,7 +316,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/0. Reasoning under Uncertainty.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/6. Exercises 15 Conditional Independence 2 nocode.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -346,7 +346,7 @@
       
       
       
-      <li><a href="../_sources/Part3/0. Reasoning under Uncertainty.md" target="_blank"
+      <li><a href="../_sources/Part3/6. Exercises 15 Conditional Independence 2 nocode.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +356,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -428,7 +428,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Reasoning under Uncertainty</h1>
+    <h1>Exercises 15: Conditional Independence 2</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,10 +442,47 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="reasoning-under-uncertainty">
-<h1>Reasoning under Uncertainty<a class="headerlink" href="#reasoning-under-uncertainty" title="Link to this heading">#</a></h1>
-<p>Logic and Knowledge Graphs enable us to represent statements of fact, but we do not always have complete knowledge of the world and our knowledge is often uncertain. In this sectin we will develop techniques for represnting and reasoning over knowledge that is subject to uncertainty, developing a class of probabilistic models known as Bayesian Networks that will allow us to efficiently make inferences over uncertain knowledge.</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-15-conditional-independence-2">
+<h1>Exercises 15: Conditional Independence 2<a class="headerlink" href="#exercises-15-conditional-independence-2" title="Link to this heading">#</a></h1>
+<p>Consider the following joint distribution of three binary variables <span class="math notranslate nohighlight">\(P(A,B,C)\)</span>:</p>
+<p>The three variables are either fully independent, or two of the variables are independent, conditional on the third.</p>
+<p>Can you determine which, and what the correct factorisation of the distribution is?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">JointPDF</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="mf">0.096</span><span class="p">,</span> <span class="mf">0.144</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.336</span><span class="p">]</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="p">[</span><span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">],</span>
+            <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span>
+        <span class="p">]</span>
+
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">JointPDF</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[0.096 0.144]
+  [0.224 0.336]]
+
+ [[0.09  0.09 ]
+  [0.01  0.01 ]]]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 
@@ -480,20 +517,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Part2/9b.%20HALD%20Practical%20Solution.html"
+       href="5.%20Conditional%20Independence%202%20nocode.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Practical: Solution to The HALD Knowledge Graph</p>
+        <p class="prev-next-title">Conditional Independence</p>
       </div>
     </a>
     <a class="right-next"
-       href="1.%20Probabilistic%20Reasoning.html"
+       href="7.%20Bayesian%20Networks.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Probabilistic Reasoning</p>
+        <p class="prev-next-title">Bayesian Networks</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

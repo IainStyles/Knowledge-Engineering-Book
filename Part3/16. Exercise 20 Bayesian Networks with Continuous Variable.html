@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reasoning under Uncertainty &#8212; ECS8052 Knowledge Engineering</title>
+    <title>Exercises 20: Bayesian Networks wth Continuous Variables &#8212; ECS8052 Knowledge Engineering</title>
   
   
   
@@ -57,13 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/0. Reasoning under Uncertainty';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/16. Exercise 20 Bayesian Networks with Continuous Variable';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Introduction to Probabilistic Reasoning" href="1.%20Probabilistic%20Reasoning.html" />
-    <link rel="prev" title="Practical: Solution to The HALD Knowledge Graph" href="../Part2/9b.%20HALD%20Practical%20Solution.html" />
+    <link rel="next" title="Introduction to Causal Inference" href="17.%20Introduction%20to%20Causal%20Inference.html" />
+    <link rel="prev" title="Bayesian Networks with Continuous Variables" href="15.%20Bayesian%20Networks%20with%20Continuous%20Variables.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -225,7 +223,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reasoning under Uncertainty</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.%20Reasoning%20under%20Uncertainty.html">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="1.%20Probabilistic%20Reasoning.html">Introduction to Probabilistic Reasoning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%2013%20Probability%20nocode.html">Exercises in Basic Probability</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3.%20Conditional%20Independence.html">Conditional Independence</a></li>
@@ -240,7 +238,7 @@
 <li class="toctree-l2"><a class="reference internal" href="13.%20More%20Approximate%20Inference%20nocode.html">More Approximate Inference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="14.%20Exercises%2019%20Approximate%20Inference%20with%20PyMC%20nocode.html">Exercise 22 - Approximate Inference with PyMC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="15.%20Bayesian%20Networks%20with%20Continuous%20Variables.html">Bayesian Networks with Continuous Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="16.%20Exercise%2020%20Bayesian%20Networks%20with%20Continuous%20Variable.html">Exercises 20: Bayesian Networks wth Continuous Variables</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercises 20: Bayesian Networks wth Continuous Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="17.%20Introduction%20to%20Causal%20Inference.html">Introduction to Causal Inference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="18.%20Exercises%2021%20Causal%20Inference.html">Exercises 21: Causal Inference</a></li>
 </ul>
@@ -316,7 +314,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/0. Reasoning under Uncertainty.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/16. Exercise 20 Bayesian Networks with Continuous Variable.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -346,7 +344,7 @@
       
       
       
-      <li><a href="../_sources/Part3/0. Reasoning under Uncertainty.md" target="_blank"
+      <li><a href="../_sources/Part3/16. Exercise 20 Bayesian Networks with Continuous Variable.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +354,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -428,7 +426,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Reasoning under Uncertainty</h1>
+    <h1>Exercises 20: Bayesian Networks wth Continuous Variables</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -442,11 +440,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="reasoning-under-uncertainty">
-<h1>Reasoning under Uncertainty<a class="headerlink" href="#reasoning-under-uncertainty" title="Link to this heading">#</a></h1>
-<p>Logic and Knowledge Graphs enable us to represent statements of fact, but we do not always have complete knowledge of the world and our knowledge is often uncertain. In this sectin we will develop techniques for represnting and reasoning over knowledge that is subject to uncertainty, developing a class of probabilistic models known as Bayesian Networks that will allow us to efficiently make inferences over uncertain knowledge.</p>
-<div class="toctree-wrapper compound">
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-20-bayesian-networks-wth-continuous-variables">
+<h1>Exercises 20: Bayesian Networks wth Continuous Variables<a class="headerlink" href="#exercises-20-bayesian-networks-wth-continuous-variables" title="Link to this heading">#</a></h1>
+<p>Placeholder</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -480,20 +476,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Part2/9b.%20HALD%20Practical%20Solution.html"
+       href="15.%20Bayesian%20Networks%20with%20Continuous%20Variables.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Practical: Solution to The HALD Knowledge Graph</p>
+        <p class="prev-next-title">Bayesian Networks with Continuous Variables</p>
       </div>
     </a>
     <a class="right-next"
-       href="1.%20Probabilistic%20Reasoning.html"
+       href="17.%20Introduction%20to%20Causal%20Inference.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Probabilistic Reasoning</p>
+        <p class="prev-next-title">Introduction to Causal Inference</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
