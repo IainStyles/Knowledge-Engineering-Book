@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -193,7 +193,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../Part1/7.%20Proving%20Arguments.html">Proving Arguments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part1/8.%20Exercise%204%20Natural%20Deduction.html">Exercise 4: Natural Deduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part1/9.%20Kanren%20Tutorial%20nocode.html">Logic Programming in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/9.%20Kanren%20Tutorial.html">Logic Programming in Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part1/10.%20Exercises%205%20Kanren%20nocode.html">Exercises 5: Using Kanren to Solve Logic Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/10.%20Exercises%205%20Kanren.html">Exercises 5: Using Kanren to Solve Logic Problems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part1/11.%20Automating%20Natural%20Deduction.html">Automating Natural Deduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part1/12.%20Exercise%206%20Automating%20Natural%20Deduction.html">Exercise 6: Automating Natural Deduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part1/13.%20Proof%20and%20Search.html">Proof and Search</a></li>
@@ -241,6 +243,7 @@
 <li class="toctree-l2"><a class="reference internal" href="9.%20Exact%20Inference%20in%20Bayesian%20Networks.html">Exact Inference in Bayesian Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="10.%20Exercises%2017%20Exact%20Inference%20nocode.html">Exercise 17 - Exact Inference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="10.%20Exercises%2017%20Exact%20Inference.html">Exercise 17 - Exact Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.%20Approximate%20Inference%20nocode.html">Approximate Inference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="11.%20Approximate%20Inference.html">Approximate Inference</a></li>
 
 
@@ -495,8 +498,8 @@ document.write(`
 <h2>Making Decisions with Bayesian Networks<a class="headerlink" href="#making-decisions-with-bayesian-networks" title="Link to this heading">#</a></h2>
 <p>You are the manager of a store that sells coats and umbrellas. Your sales data indicates that people’s buying habits have a pattern:</p>
 <ul class="simple">
-<li><p>They buy an umbrella when the weekly rainfall exceeds 10 (arbitrary units).</p></li>
-<li><p>The but a coat when the weekly rainfall exceeds 5 a.u. or the weekly temperature drops below 12 a.u.</p></li>
+<li><p>They buy an umbrella when the weekly rainfall exceeds 12 (arbitrary units).</p></li>
+<li><p>They buy a coat when the weekly rainfall exceeds 5 a.u. or the weekly temperature drops below 8 a.u.</p></li>
 </ul>
 <p>You would to predict the likelihood of an individual buying coats or umbrellas by season to have better control of your stock numbers so you decide to build a Bayesian network based on historic weather data to help you do this. The data tells your the following.</p>
 <ul class="simple">
