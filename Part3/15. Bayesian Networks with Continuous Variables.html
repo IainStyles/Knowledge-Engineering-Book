@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -192,7 +192,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../Part1/7.%20Proving%20Arguments.html">Proving Arguments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part1/8.%20Exercise%204%20Natural%20Deduction.html">Exercise 4: Natural Deduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part1/9.%20Kanren%20Tutorial%20nocode.html">Logic Programming in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/9.%20Kanren%20Tutorial.html">Logic Programming in Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part1/10.%20Exercises%205%20Kanren%20nocode.html">Exercises 5: Using Kanren to Solve Logic Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/10.%20Exercises%205%20Kanren.html">Exercises 5: Using Kanren to Solve Logic Problems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part1/11.%20Automating%20Natural%20Deduction.html">Automating Natural Deduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part1/12.%20Exercise%206%20Automating%20Natural%20Deduction.html">Exercise 6: Automating Natural Deduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part1/13.%20Proof%20and%20Search.html">Proof and Search</a></li>
@@ -240,6 +242,7 @@
 <li class="toctree-l2"><a class="reference internal" href="9.%20Exact%20Inference%20in%20Bayesian%20Networks.html">Exact Inference in Bayesian Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="10.%20Exercises%2017%20Exact%20Inference%20nocode.html">Exercise 17 - Exact Inference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="10.%20Exercises%2017%20Exact%20Inference.html">Exercise 17 - Exact Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.%20Approximate%20Inference%20nocode.html">Approximate Inference</a></li>
 <li class="toctree-l2"><a class="reference internal" href="11.%20Approximate%20Inference.html">Approximate Inference</a></li>
 
 
@@ -480,50 +483,56 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymc</span> <span class="k">as</span> <span class="nn">mc</span>
 <span class="k">with</span> <span class="n">mc</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
-    
-    <span class="c1">#X = mc.Normal(&#39;X&#39;, mu=5.0, sigma=1.0)</span>
-    <span class="n">Z</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Bernoulli</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="n">Y</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-    <span class="n">YY</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="s1">&#39;YY&#39;</span><span class="p">,</span> <span class="n">Y</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">Z</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
-
-    <span class="c1"># YY = mc.Deterministic(&#39;YY&#39;, Y+mc.math.switch(Z,3.0,5.0))</span>
-
+    <span class="n">X</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">mu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="c1">#Y = mc.Normal(&#39;Y&#39;,mu=5.0, sigma=2.0)</span>
+    <span class="c1">#Z = mc.Normal(&#39;Z&#39;,mu=3.0+X, sigma=0.1)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Bernoulli</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1"># Obvious thing that doesn&#39;t work</span>
+    <span class="c1">#Z = mc.Normal(&#39;Z&#39;,mu=3.0*Y, sigma=0.1)</span>
+    <span class="c1"># Less obvious method that does</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="n">X</span><span class="o">+</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">))</span>
     <span class="n">step</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Metropolis</span><span class="p">()</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">tune</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">progressbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">mc</span><span class="o">.</span><span class="n">plot_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">tune</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">progressbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Multiprocess sampling (4 chains in 4 jobs)
 CompoundStep
-&gt;Metropolis: [Z]
+&gt;Metropolis: [X]
 &gt;Metropolis: [Y]
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c99bd235154c43658dc077ce2863cc6e", "version_major": 2, "version_minor": 0}</script><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9032400afabe4cf4920e38ccedbbbd20", "version_major": 2, "version_minor": 0}</script><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
 </div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">
 </pre>
-</div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sampling 4 chains for 5_000 tune and 1_000 draw iterations (20_000 + 4_000 draws total) took 1 seconds.
-The rhat statistic is larger than 1.01 for some parameters. This indicates problems during sampling. See https://arxiv.org/abs/1903.08008 for details
+</div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sampling 4 chains for 10_000 tune and 100_000 draw iterations (40_000 + 400_000 draws total) took 14 seconds.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;Axes: title={&#39;center&#39;: &#39;Z&#39;}&gt;, &lt;Axes: title={&#39;center&#39;: &#39;Z&#39;}&gt;],
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mc</span><span class="o">.</span><span class="n">plot_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;Axes: title={&#39;center&#39;: &#39;X&#39;}&gt;, &lt;Axes: title={&#39;center&#39;: &#39;X&#39;}&gt;],
        [&lt;Axes: title={&#39;center&#39;: &#39;Y&#39;}&gt;, &lt;Axes: title={&#39;center&#39;: &#39;Y&#39;}&gt;],
-       [&lt;Axes: title={&#39;center&#39;: &#39;YY&#39;}&gt;, &lt;Axes: title={&#39;center&#39;: &#39;YY&#39;}&gt;]],
+       [&lt;Axes: title={&#39;center&#39;: &#39;Z&#39;}&gt;, &lt;Axes: title={&#39;center&#39;: &#39;Z&#39;}&gt;]],
       dtype=object)
 </pre></div>
 </div>
-<img alt="../_images/faf41632bb68aeec1b75ca05719a4835fe6b67f8ea758483fa923ea123893fee.png" src="../_images/faf41632bb68aeec1b75ca05719a4835fe6b67f8ea758483fa923ea123893fee.png" />
+<img alt="../_images/b8a802aedbb22e3ded7b02a442d948d2f31404c218b2aeca30221dec644c0561.png" src="../_images/b8a802aedbb22e3ded7b02a442d948d2f31404c218b2aeca30221dec644c0561.png" />
 </div>
 </div>
 <section id="making-decisions-with-bayesian-networks">
 <h2>Making Decisions with Bayesian Networks<a class="headerlink" href="#making-decisions-with-bayesian-networks" title="Link to this heading">#</a></h2>
 <p>You are the manager of a store that sells coats and umbrellas. Your sales data indicates that people’s buying habits have a pattern:</p>
 <ul class="simple">
-<li><p>They buy an umbrella when the weekly rainfall exceeds 10 (arbitrary units).</p></li>
-<li><p>The but a coat when the weekly rainfall exceeds 5 a.u. or the weekly temperature drops below 12 a.u.</p></li>
+<li><p>They buy an umbrella when the weekly rainfall exceeds 12 (arbitrary units).</p></li>
+<li><p>They buy a coat when the weekly rainfall exceeds 5 a.u. or the weekly temperature drops below 8 a.u.</p></li>
 </ul>
 <p>You would to predict the likelihood of an individual buying coats or umbrellas by season to have better control of your stock numbers so you decide to build a Bayesian network based on historic weather data to help you do this. The data tells your the following.</p>
 <ul class="simple">
@@ -572,51 +581,48 @@ The rhat statistic is larger than 1.01 for some parameters. This indicates probl
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="k">with</span> <span class="n">mc</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
-    <span class="c1"># Define the seasons as a categorical variable</span>
+    <span class="c1"># Seasons</span>
     <span class="n">S</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="s1">&#39;Season&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.25</span><span class="p">]))</span>
-    <span class="c1"># Create a base distribution for rainfall</span>
     <span class="n">Rbase</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s1">&#39;Rainbase&#39;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
     <span class="n">Tbase</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="s1">&#39;Tempbase&#39;</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 
+    <span class="n">RMu</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mf">12.0</span><span class="p">,</span> <span class="c1"># Spring</span>
+            <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mf">10.0</span><span class="p">,</span> <span class="c1"># Summer</span>
+                <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mf">15.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
     
-    <span class="n">R_mu</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">12.0</span><span class="p">,</span>
-                <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="mf">10.0</span><span class="p">,</span>
-                    <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mf">15.0</span><span class="p">,</span>
-                        <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-                    <span class="p">)</span> 
+    <span class="n">RSigma</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mf">4.0</span><span class="p">,</span> <span class="c1"># Spring</span>
+                <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mf">2.0</span><span class="p">,</span> <span class="c1"># Summer</span>
+                    <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
                 <span class="p">)</span>
+            <span class="p">)</span>                               
+    <span class="n">TMu</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mf">15.0</span><span class="p">,</span> <span class="c1"># Spring</span>
+            <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mf">20.0</span><span class="p">,</span> <span class="c1"># Summer</span>
+                <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
             <span class="p">)</span>
-    <span class="n">R_sigma</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">2.0</span><span class="p">,</span>
-                <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="mf">1.5</span><span class="p">,</span>
-                    <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mf">3.0</span><span class="p">,</span>
-                        <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-                    <span class="p">)</span>
+        <span class="p">)</span>
+    
+    <span class="n">TSigma</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mf">3.0</span><span class="p">,</span> <span class="c1"># Spring</span>
+                <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="mf">5.0</span><span class="p">,</span> <span class="c1"># Summer</span>
+                    <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
                 <span class="p">)</span>
-            <span class="p">)</span>
-            
-    <span class="n">T_mu</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">15.0</span><span class="p">,</span>
-                <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="mf">20.0</span><span class="p">,</span>
-                    <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mf">10.0</span><span class="p">,</span>
-                        <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
-                    <span class="p">)</span> 
-                <span class="p">)</span>
-            <span class="p">)</span>
-    <span class="n">T_sigma</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">3.0</span><span class="p">,</span>
-                <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="mf">5.0</span><span class="p">,</span>
-                    <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="mf">5.0</span><span class="p">,</span>
-                        <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)</span>
-                    <span class="p">)</span>
-                <span class="p">)</span>
-            <span class="p">)</span>
+            <span class="p">)</span>       
 
-    <span class="n">R</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="s1">&#39;Rainfall&#39;</span><span class="p">,</span> <span class="n">Rbase</span><span class="o">*</span><span class="n">R_sigma</span> <span class="o">+</span> <span class="n">R_mu</span><span class="p">)</span>
-    <span class="n">T</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="n">Tbase</span><span class="o">*</span><span class="n">T_sigma</span> <span class="o">+</span> <span class="n">T_mu</span><span class="p">)</span>
-    <span class="n">U</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="s1">&#39;Umbrella&#39;</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="mf">1.0</span> <span class="p">,</span><span class="mf">0.0</span><span class="p">))</span>
-    <span class="n">C</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="s1">&#39;Coat&#39;</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mf">10.</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="mf">12.</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    
+    <span class="n">R</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="s1">&#39;Rain&#39;</span><span class="p">,</span> <span class="n">Rbase</span><span class="o">*</span><span class="n">RSigma</span><span class="o">+</span><span class="n">RMu</span><span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="n">Tbase</span><span class="o">*</span><span class="n">TSigma</span><span class="o">+</span><span class="n">TMu</span><span class="p">)</span>
+
+    <span class="n">U</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="s1">&#39;Umbrella&#39;</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mf">10.0</span><span class="p">),</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">))</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Deterministic</span><span class="p">(</span><span class="s1">&#39;Coat&#39;</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">ge</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="mf">12.0</span><span class="p">),</span><span class="mf">1.0</span><span class="p">,</span>
+                                               <span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">switch</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="mf">8.0</span><span class="p">),</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+                                               <span class="p">)</span>
+                        <span class="p">)</span>
 
     <span class="n">step</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">Metropolis</span><span class="p">()</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">tune</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">progressbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">tune</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">progressbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
+    
 <span class="n">mc</span><span class="o">.</span><span class="n">plot_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -629,10 +635,10 @@ CompoundStep
 &gt;Metropolis: [Tempbase]
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1f5de3502a4a418ebdab61c90a62252b", "version_major": 2, "version_minor": 0}</script><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d7ff6224e5974f5abb93160e4bc20439", "version_major": 2, "version_minor": 0}</script><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
 </div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">
 </pre>
-</div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sampling 4 chains for 5_000 tune and 100_000 draw iterations (20_000 + 400_000 draws total) took 20 seconds.
+</div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sampling 4 chains for 10_000 tune and 100_000 draw iterations (40_000 + 400_000 draws total) took 21 seconds.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;Axes: title={&#39;center&#39;: &#39;Season&#39;}&gt;,
@@ -641,8 +647,8 @@ CompoundStep
         &lt;Axes: title={&#39;center&#39;: &#39;Rainbase&#39;}&gt;],
        [&lt;Axes: title={&#39;center&#39;: &#39;Tempbase&#39;}&gt;,
         &lt;Axes: title={&#39;center&#39;: &#39;Tempbase&#39;}&gt;],
-       [&lt;Axes: title={&#39;center&#39;: &#39;Rainfall&#39;}&gt;,
-        &lt;Axes: title={&#39;center&#39;: &#39;Rainfall&#39;}&gt;],
+       [&lt;Axes: title={&#39;center&#39;: &#39;Rain&#39;}&gt;,
+        &lt;Axes: title={&#39;center&#39;: &#39;Rain&#39;}&gt;],
        [&lt;Axes: title={&#39;center&#39;: &#39;Temperature&#39;}&gt;,
         &lt;Axes: title={&#39;center&#39;: &#39;Temperature&#39;}&gt;],
        [&lt;Axes: title={&#39;center&#39;: &#39;Umbrella&#39;}&gt;,
@@ -651,7 +657,7 @@ CompoundStep
         &lt;Axes: title={&#39;center&#39;: &#39;Coat&#39;}&gt;]], dtype=object)
 </pre></div>
 </div>
-<img alt="../_images/38200b85b87bea1c071da10fd03b72aaad0001e5a883e62ddd40758855f51d57.png" src="../_images/38200b85b87bea1c071da10fd03b72aaad0001e5a883e62ddd40758855f51d57.png" />
+<img alt="../_images/65681299c181714f323df030b2e663b6220c889a9932d3052dfbab5ffeb3323d.png" src="../_images/65681299c181714f323df030b2e663b6220c889a9932d3052dfbab5ffeb3323d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -673,14 +679,14 @@ CompoundStep
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(Umbrella|Spring) = 0.8402858169334557
-P(Coat|Spring) = 0.8659434753103669
-P(Umbrella|Summer) = 0.4981103854016054
-P(Coat|Summer) = 0.5245051602931645
-P(Umbrella|Autumn) = 0.9535800546938938
-P(Coat|Autumn) = 0.9833922190949558
-P(Umbrella|Winter) = 0.9999496561515149
-P(Coat|Winter) = 0.9999496561515149
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(Umbrella|Spring) = 0.6895656326481883
+P(Coat|Spring) = 0.5020295680203752
+P(Umbrella|Summer) = 0.49893364452134725
+P(Coat|Summer) = 0.16420868375518088
+P(Umbrella|Autumn) = 0.8399050022855099
+P(Coat|Autumn) = 0.8178150525667269
+P(Umbrella|Winter) = 0.9995575577186067
+P(Coat|Winter) = 0.9995776687313973
 </pre></div>
 </div>
 </div>
