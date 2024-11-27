@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bayesian Networks &#8212; ECS8052 Knowledge Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Part3/7. Bayesian Networks';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercise 16: Bayesian Networks" href="8.%20Exercises%2016%20Bayesian%20Networks.html" />
+    <link rel="prev" title="Exercises 15: Conditional Independence 2" href="6.%20Exercises%2015%20Conditional%20Independence%202.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="ECS8052 Knowledge Engineering - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="ECS8052 Knowledge Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to ECS8052 Knowledge Engineering
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Representing and Discovering Knowledge with Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part1/1.%20LogicAndAI.html">Introduction to Logic in Artificial Intelligence</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/2.%20Exercise%201%20Are%20you%20Logical.html">Exercise 1: Are you Logical?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/3.%20LogicalReasoning.html">Logic and Knowledge</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../Part1/4.%20Exercise%202%20Elementary%20my%20dear%20Watson.html">Exercise 2: Elementary, my dear Watson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/5.%20Formal%20Propositional%20Logic.html">Making Logical Arguments Formal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/6.%20Exercise%203%20Formal%20Dinners.html">Exercise 3: Formal Dinners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/7.%20Proving%20Arguments.html">Proving Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/8.%20Exercise%204%20Natural%20Deduction.html">Exercise 4: Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/9.%20Kanren%20Tutorial%20nocode.html">Logic Programming in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/10.%20Exercises%205%20Kanren%20nocode.html">Exercises 5: Using Kanren to Solve Logic Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/11.%20Automating%20Natural%20Deduction.html">Automating Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/12.%20Exercise%206%20Automating%20Natural%20Deduction.html">Exercise 6: Automating Natural Deduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/13.%20Proof%20and%20Search.html">Proof and Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/14.%20Exercises%207%20Proof%20and%20Search.html">Exercise 7: Proof and Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/15.%20First%20Order%20Logic.html">First Order Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part1/16.%20Exercises%208%20First%20Order%20Logic.html">Exercises 8: First Order Logic</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graphical Representations of Knowledge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part2/0.%20Intro%20to%20Knowledge%20Graphs.html">Introduction to Knowledge Graphs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/1.%20Knowledge%20Graphs.html">Knowledge Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/2.%20Exercises%209%20Designing%20a%20Knowledge%20Graph.html">Exercise 9: Designing a Simple Knowledge Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/3.%20Graphs.html">Why do we need graphs?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/4.%20Ontologies.html">Ontologies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/5.%20Exercises%2010%20Creating%20an%20Ontology.html">Exercises 10: Creating an Ontology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/6.%20Creating%20a%20Knowledge%20Graph%20in%20OWLReady2%20nocode.html">Practical: Creating a Knowledge Graph in OWLReady2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/6a.%20Creating%20a%20Knowledge%20Graph%20in%20OWLReady2.html">Practical Solution: Creating a Knowledge Graph in OWLReady2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/7.%20Exercise%2011%20Extending%20a%20Knowledge%20Graph.html">Exercises 11: Extending a Knowledge Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/7a.%20Exercise%2011%20Extending%20a%20Knowledge%20Graph%20Solution.html">Exercise 11: Solution Extending a Knowledge Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/8.%20Exercises%2012%20Implementing%20a%20complete%20ontology.html">Exercises 12: Implementing a Complete Ontology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/8a.%20Exercises%2012%20Implementing%20a%20complete%20ontology%20Solution.html">Exercises 12: Solution to Implementing a Complete Ontology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/9.%20HALD%20Practical.html">Practical: The HALD Knowledge Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/9a.%20Dynamic%20Graph%20Creation.html">Example of dynamic network creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part2/9b.%20HALD%20Practical%20Solution.html">Practical: Solution to The HALD Knowledge Graph</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reasoning under Uncertainty</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0.%20Reasoning%20under%20Uncertainty.html">Reasoning under Uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1.%20Probabilistic%20Reasoning.html">Introduction to Probabilistic Reasoning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%2013%20Probability%20nocode.html">Exercises in Basic Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.%20Exercise%2013%20Probability.html">Exercise 13: Basic Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3.%20Conditional%20Independence.html">Conditional Independence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4.%20Exercises%2014%20Conditional%20Independence.html">Exercises 14: Conditional Independence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.%20Conditional%20Independence%202%20nocode.html">Conditional Independence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.%20Conditional%20Independence%202.html">Conditional Independence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.%20Exercises%2015%20Conditional%20Independence%202%20nocode.html">Exercises 15: Conditional Independence 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6.%20Exercises%2015%20Conditional%20Independence%202.html">Exercises 15: Conditional Independence 2</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Bayesian Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8.%20Exercises%2016%20Bayesian%20Networks.html">Exercise 16: Bayesian Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9.%20Exact%20Inference%20in%20Bayesian%20Networks%20nocode.html">Exact Inference in Bayesian Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9.%20Exact%20Inference%20in%20Bayesian%20Networks.html">Exact Inference in Bayesian Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10.%20Exercises%2017%20Exact%20Inference%20nocode.html">Exercise 17 - Exact Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="10.%20Exercises%2017%20Exact%20Inference.html">Exercise 17 - Exact Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11.%20Approximate%20Inference.html">Approximate Inference</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="12.%20Exercise%2018%20Approximate%20Inference.html">Exercise 18 - Approximate Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12.%20Exercise%2018%20Approximate%20Inference%20nocode.html">Exercise 18 - Approximate Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.%20More%20Approximate%20Inference%20nocode.html">More Approximate Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13.%20More%20Approximate%20Inference.html">More Approximate Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.%20Exercises%2019%20Approximate%20Inference%20with%20PyMC%20nocode.html">Exercise 22 - Approximate Inference with PyMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14.%20Exercises%2019%20Approximate%20Inference%20with%20PyMC.html">Exercise 19 - Approximate Inference with PyMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.%20Bayesian%20Networks%20with%20Continuous%20Variables%20nocode.html">Bayesian Networks with Continuous Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="15.%20Bayesian%20Networks%20with%20Continuous%20Variables.html">Bayesian Networks with Continuous Variables</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPart3/7. Bayesian Networks.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Part3/7. Bayesian Networks.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bayesian Networks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-definition-of-a-bayesian-network">Formal definition of a Bayesian Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-method-for-constructing-bayesian-networks">A method for constructing Bayesian Networks</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="bayesian-networks">
+<h1>Bayesian Networks<a class="headerlink" href="#bayesian-networks" title="Link to this heading">#</a></h1>
+<p>We have previously established that we can write a joint distribution as a product of conditional probabilities. In our specific example, which we will continue in this section, we showed that we could write</p>
+<p><span class="math notranslate nohighlight">\(P(G,M,F,P) = P(P\vert M)P(F\vert M)P(M)P(G)\)</span></p>
+<p>Why is this useful and desirable? There are three substantive reasons.</p>
+<ol class="arabic simple">
+<li><p>The number of parameters needed to characterise the distribution is much reduced. The full joint distribution requires, in this case, fifteen independent parameters (with the sixteenth being set by the normalisation constraint). Our factorised distribution can be characterised by just six parameters: <span class="math notranslate nohighlight">\(P(M)\)</span> and <span class="math notranslate nohighlight">\(P(G)\)</span> require one parameter each (with the second following for normalisation); <span class="math notranslate nohighlight">\(P(P\vert M)\)</span> and <span class="math notranslate nohighlight">\(P(F\vert M)\)</span> require two parameters each, with the others following from normalisation. This makes little difference here, but for problems involving many more variables, or where the variables have many more possible values then this can be a major issue, particularly when performing inference because of the challenges of sampling from these distributions.</p></li>
+<li><p>It is rarely possible, in real problems, to measure the joint distribution directly. In most practical situations we may observe a small number of variables whilst controlling the others. Factorisation of the joint distribution in terms of things that we can observe may, some circumstance be important if not necessarily optimal.</p></li>
+<li><p>Because the factorisation reflects the structure of the <strong>causal relationships</strong> in the problem. In our example, the factorisation reflects that studying Geography does not influence either study of Mathematics, or careers in finance or programming; it reflects that those careers <em>do</em> depend on having studies Mathematics; and it reflects that careers in programming and finance are conditionally independent of each other.</p></li>
+</ol>
+<p>The first two reasons are practical, pragmatic reasons why this factorisation is useful. The third, however, is much more powerful because it allows us to capture and model probabilistic problems in a very natural and interpretable way. Factorisations of this type that leverage the independence and conditional independence relationships to represent a world probabilistically are called <strong>Bayesian networks</strong>.</p>
+<section id="formal-definition-of-a-bayesian-network">
+<h2>Formal definition of a Bayesian Network<a class="headerlink" href="#formal-definition-of-a-bayesian-network" title="Link to this heading">#</a></h2>
+<p>So what is a Bayesian network, technically? It is a representation of a suitably factorised probability distribution as a <em>directed graph</em> in which</p>
+<ol class="arabic simple">
+<li><p>Each node represents a single random variable (discrete or continuous)</p></li>
+<li><p>Edges between node represent conditional relationships and are directed from the “conditioner” (or <em>parent</em>) node to the “conditioned” node</p></li>
+<li><p>Each node has an associated conditional probability distribution with the variable associated with the node conditioned on it “parents”/</p></li>
+<li><p>“Orphan” nodes with no parents represent variables that are unconditionally independent.</p></li>
+<li><p>The graph must be strictly acyclic: it is a <strong>directed acyclic graph</strong> (DAG).</p></li>
+</ol>
+<p>What does such a graph look like? For our current example,</p>
+<ul class="simple">
+<li><p>There are four nodes corresponding to random variables <span class="math notranslate nohighlight">\(G\)</span>, <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(F\)</span>, and <span class="math notranslate nohighlight">\(P\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(M\)</span> and unconditionally independent and are this “orphan” nodes.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(F\)</span> are conditioned on <span class="math notranslate nohighlight">\(M\)</span> only.</p></li>
+</ul>
+<p>We therefore draw the following DAG:</p>
+<p><img alt="Example of a DAG" src="../_images/dag.png" /></p>
+<p>The DAG naturally and visually conveys the structure and relationships within the factorised joint distribution. The isolation of <span class="math notranslate nohighlight">\(G\)</span> reflects its statistical independence and lack of influence on any other variables, while <span class="math notranslate nohighlight">\(M\)</span>’s lack of parents indicates that it is unconditionally independent but the outgoing arrows reflect its influence on other variables: <span class="math notranslate nohighlight">\(M\)</span> has a <em>causative</em> influence on <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(F\)</span>.</p>
+<p>Each node of this graph has associated with it a probability distribution as shown in the figure below.</p>
+<p><img alt="Example of a DAG" src="../_images/dag_pdf.png" /></p>
+<p>This graph was, in a sense, known to us and was derived from the joint probability distribution. This was not by chance - in fact the joint probability was generated from the conditionally factorised form. In general we will not of course know the joint distribution, and in any case it would be very hard to uncover the various dependencies/independencies if we did not know what we were looking for. Most commonly, we will be posed with a problem and we will be looking to construct a Bayesian network such that the resulting joint distribution represented the given problem domain well and efficiently. Let us now set out a procedure for doing just that.</p>
+</section>
+<section id="a-method-for-constructing-bayesian-networks">
+<h2>A method for constructing Bayesian Networks<a class="headerlink" href="#a-method-for-constructing-bayesian-networks" title="Link to this heading">#</a></h2>
+<p>Let us being by reminding ourselve of our conditional factorisation of the joint distribution.</p>
+<p><span class="math notranslate nohighlight">\( P(x_1,\dots,x_N) = \prod_{i=1}^N P(x_i\vert x_{i-1},\dots,x_1)\)</span>.</p>
+<p>(notice the notation - this refers to specific values of the random variables)</p>
+<p>This is called the <strong>chain rule</strong>. It requires an ordering to be imposed on the random variables and we will suggestively write as a shorthand that</p>
+<p><span class="math notranslate nohighlight">\(P(X_i\vert X_{i-1},\dots,X_1) = P(X_i\vert\mathrm{parents}(X_i)\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\mathrm{parents}(X_i)\)</span> are a subset of <span class="math notranslate nohighlight">\({X_{i-1},\dots,X_1}\)</span>. We can do this very simply in the graph by making sure that the nodes are appropriate ordered such that those nodes that are closer to the start of the DAG and have no incoming edges are lower in number that those with incoming edges. The question is, how to acheive this?</p>
+<p>The Chain rule implies that a Bayesian network properly represents its domain if each node is conditionally independent of its predecessors in the ordering, given its parents. Here is a procedure for acheiving this:</p>
+<ol class="arabic simple">
+<li><p>Choose the variables needed to model the domain and order them. A good order has causes preceding effects and this will lead for a more compact representation.</p></li>
+<li><p>For each node, choose a set of parents such that the chain rule is satisfied and that the parents can plausibly represent causes of the node’s effect.</p></li>
+<li><p>Add edges directed from parents to the node.</p></li>
+<li><p>Write down a conditional probability table for the node.</p></li>
+</ol>
+<p>Let’s work through a simple example. Consider a situation in which</p>
+<ul class="simple">
+<li><p>Fire brigade called</p></li>
+<li><p>Cat stuck in tree</p></li>
+<li><p>House on fire</p></li>
+<li><p>Explosion in kitchen</p></li>
+</ul>
+<p>How would you order this? Well, let’s think about what the causative chain of events might be.</p>
+<ul class="simple">
+<li><p>We may call the fire brigade because of a fire, or because of a stuck cat.</p></li>
+<li><p>The explosion in the kitchen could cause the fire, and might also have scared the cat.</p></li>
+</ul>
+<p>We would therefore place the explosion first, followed by the cat and the fire in either order with the explosion as it’s parent, and then the fire brigade as the final node.</p>
+<p><img alt="DAG for calling the Fire Brigade" src="../_images/fire_dag.png" /></p>
+<p>Can we ascribe some rough probabilities to these events? Let’s say there is a 5% chance of a kitchen explosion <span class="math notranslate nohighlight">\(X\)</span>,</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(P(X)\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(\lnot X)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>0.05</p></td>
+<td class="text-center"><p>0.95</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If there was a kitchen explosion, there is a high chance the cat might climb a tree (<span class="math notranslate nohighlight">\(C\)</span>). There is a reduced (but non-zero) probability that they might climb a tree anyway…</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(C)\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(\lnot C)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(X\)</span></p></td>
+<td class="text-center"><p>0.85</p></td>
+<td class="text-center"><p>0.15</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(\lnot X\)</span></p></td>
+<td class="text-center"><p>0.40</p></td>
+<td class="text-center"><p>0.60</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>If there was an explosion, the chances of a fire <span class="math notranslate nohighlight">\(F\)</span> are higher than if there weren’t a fire.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(F)\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(\lnot F)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(X\)</span></p></td>
+<td class="text-center"><p>0.65</p></td>
+<td class="text-center"><p>0.35</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(\lnot X\)</span></p></td>
+<td class="text-center"><p>0.10</p></td>
+<td class="text-center"><p>0.90</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>And finally we need the probabilities of the fire brigade (<span class="math notranslate nohighlight">\(B\)</span>) being called for each combination of cat/fire.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(B)\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(P(\lnot B)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(C,F\)</span></p></td>
+<td class="text-center"><p>0.99</p></td>
+<td class="text-center"><p>0.01</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(C,\lnot F\)</span></p></td>
+<td class="text-center"><p>0.6</p></td>
+<td class="text-center"><p>0.40</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(\lnot C,F\)</span></p></td>
+<td class="text-center"><p>0.85</p></td>
+<td class="text-center"><p>0.15</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p><span class="math notranslate nohighlight">\(\lnot C,\lnot F\)</span></p></td>
+<td class="text-center"><p>0.01</p></td>
+<td class="text-center"><p>0.99</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Part3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="6.%20Exercises%2015%20Conditional%20Independence%202.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exercises 15: Conditional Independence 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="8.%20Exercises%2016%20Bayesian%20Networks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercise 16: Bayesian Networks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-definition-of-a-bayesian-network">Formal definition of a Bayesian Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-method-for-constructing-bayesian-networks">A method for constructing Bayesian Networks</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Professor Iain Styles
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
